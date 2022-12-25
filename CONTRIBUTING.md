@@ -162,33 +162,3 @@ if (foo) {
 if (foo)
     return bar;
 ```
-
-
-
-Python
-------
-
-Nothing here yet.
-
-
-
-Ruby
-----
-
-* Freeze objects if you don't plan to modify them
-
-### Matz's Ruby interpreter
-
-Use **RuboCop**. See [bindings/ruby/.rubocop.yml](/bindings/ruby/.rubocop.yml)
-
-### mruby
-
-Use **RuboCop**. See [bindings/mruby/.rubocop.yml](/bindings/mruby/.rubocop.yml)
-
-
-
-Rust
-----
-
-Use **rustfmt** and **Clippy**.
-See [bindings/rust/rustfmt.toml](/bindings/rust/rustfmt.toml)

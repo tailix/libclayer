@@ -1,1 +1,0 @@
-../../kernaux-sys/src/version.rs
