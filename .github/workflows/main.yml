@@ -1,0 +1,148 @@
+name: Main
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: dependencies
+        run: sudo apt-get --yes install cppcheck
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure --enable-checks-cppcheck
+      - name: check
+        run: make check
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        assert: ['--disable-assert', '--enable-assert']
+        cc: ['gcc', 'clang', 'tcc']
+        opt: ['', '-O0', '-O3']
+    steps:
+      - uses: actions/checkout@v2
+      - name: dependencies
+        run: sudo apt-get --yes install clang tcc
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure ${{matrix.assert}} --enable-fixtures --enable-checks --enable-checks-pthreads --enable-checks-python CC='${{matrix.cc}}' CFLAGS='${{matrix.opt}}'
+      - name: make
+        run: make
+      - name: check
+        run: make check || (./make/test-suite-log && false)
+      - name: install
+        run: sudo make install
+
+  cross:
+    runs-on: ubuntu-22.04 # jammy, because it's in ".github/sources.list"
+    strategy:
+      matrix:
+        cross:
+          - arch: 'aarch64'
+            apt_arch: 'arm64'
+            apt_pkgs: 'crossbuild-essential-arm64'
+            cprefix: 'aarch64-linux-gnu-'
+          - arch: 'i386'
+            apt_arch: 'i386'
+            apt_pkgs: 'crossbuild-essential-i386'
+            cprefix: 'i686-linux-gnu-'
+          - arch: 'riscv64'
+            apt_arch: 'riscv64'
+            apt_pkgs: 'crossbuild-essential-riscv64'
+            cprefix: 'riscv64-linux-gnu-'
+    steps:
+      - uses: actions/checkout@v2
+      - name: apt sources
+        run: sudo cp .github/sources.list /etc/apt/sources.list
+      - name: apt upgrade
+        run: sudo apt-get --yes update && (sudo apt-get --yes upgrade || sudo apt-get --yes -f install)
+      - name: dependencies
+        run: sudo apt-get --yes install binfmt-support qemu qemu-user-static ${{matrix.cross.apt_pkgs}}
+      - name: dpkg arch
+        run: sudo dpkg --add-architecture ${{matrix.cross.apt_arch}}
+      - name: apt update
+        run: sudo apt-get --yes update
+      - name: cross dependencies
+        run: sudo apt-get --yes install libc6:${{matrix.cross.apt_arch}}
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure --host='${{matrix.cross.arch}}-unknown-elf' --enable-checks --enable-checks-pthreads --enable-checks-python CC='${{matrix.cross.cprefix}}gcc'
+      - name: make
+        run: make
+      - name: check
+        run: make check || (./make/test-suite-log && false)
+      - name: install
+        run: sudo make install
+
+  cond:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        packages:
+          - without: 'all'
+          - without: 'io'
+          - without: 'ntoa'
+            dependencies: '--without-printf --without-units'
+          - without: 'printf'
+          - without: 'memmap'
+    steps:
+      - uses: actions/checkout@v2
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure --enable-checks --enable-checks-pthreads --enable-checks-python --without-${{matrix.packages.without}} ${{matrix.packages.dependencies}}
+      - name: make
+        run: make
+      - name: check
+        run: make check || (./make/test-suite-log && false)
+      - name: install
+        run: sudo make install
+
+  freestanding:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        assert: ['--disable-assert', '--enable-assert']
+    steps:
+      - uses: actions/checkout@v2
+      - name: apt update
+        run: sudo apt-get --yes update
+      - name: dependencies
+        run: sudo apt-get --yes install crossbuild-essential-i386
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure --host='i386-elf' ${{matrix.assert}} --enable-freestanding --with-libc CC="$(which i686-linux-gnu-gcc)"
+      - name: make
+        run: make
+
+  dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure dist
+        run: ./configure
+      - name: dist
+        run: make dist
+      - name: extract
+        run: tar -xzf "libkernaux-$(cat VERSION).tar.gz"
+      - name: configure
+        run: cd "libkernaux-$(cat VERSION)" && ./configure --enable-checks --enable-checks-pthreads --enable-checks-python
+      - name: make
+        run: cd "libkernaux-$(cat VERSION)" && make
+      - name: check
+        run: cd "libkernaux-$(cat VERSION)" && make check || (./make/test-suite-log && false)
+      - name: install
+        run: cd "libkernaux-$(cat VERSION)" && sudo make install

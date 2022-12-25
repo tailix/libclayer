@@ -1,0 +1,48 @@
+name: mruby
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      MRUBY_YAML_USE_SYSTEM_LIBRARY: x
+    strategy:
+      matrix:
+        assert: ['--disable-assert', '--enable-assert']
+        packages:
+          - configure: ''
+          - configure: '--without-all'
+          - configure: '--without-all --with-ntoa'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+      - name: dependencies
+        run: sudo apt-get --yes install cppcheck libyaml-dev rake
+      - name: autogen
+        run: ./autogen.sh
+      - name: configure
+        run: ./configure ${{matrix.assert}} ${{matrix.packages.configure}} CFLAGS='-O3'
+      - name: make
+        run: make
+      - name: install
+        run: sudo make install
+      - name: ldconfig
+        run: sudo ldconfig
+      - working-directory: vendor/mruby
+        name: test
+        run: MRUBY_CONFIG=../../bindings/mruby/build_config.rb rake test
+      - working-directory: bindings/mruby
+        name: setup
+        run: ./bin/setup
+      - working-directory: bindings/mruby
+        name: lint
+        run: rake
