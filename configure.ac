@@ -42,6 +42,7 @@ AC_SUBST([PACKAGE_DESCR], ['libc for both hosted and freestanding environments']
 
 dnl Features (enabled by default)
 AC_ARG_ENABLE([float],           AS_HELP_STRING([--disable-float],          [disable floating-point arithmetic]))
+AC_ARG_ENABLE([prefix],          AS_HELP_STRING([--disable-prefix],         [disable name prefix]))
 AC_ARG_ENABLE([werror],          AS_HELP_STRING([--disable-werror],         [disable -Werror]))
  
 dnl Features (disabled by default)
@@ -74,6 +75,7 @@ AS_IF([test "$enable_checks_all" = yes], do_enable_checks_all)
 
 dnl Features (enabled by default)
 AS_IF([test "$enable_float"           = no ], [enable_float=no],            [enable_float=yes])
+AS_IF([test "$enable_prefix"          = no ], [enable_prefix=no],           [enable_prefix=yes])
 AS_IF([test "$enable_werror"          = no ], [enable_werror=no],           [enable_werror=yes])
 
 dnl Features (disabled by default)
@@ -92,7 +94,8 @@ AS_IF([test "$enable_pkg_config"      = no ], [enable_pkg_config=''])
 # Test args #
 #############
 
-AS_IF([test "$enable_checks"   = yes -a "$enable_freestanding" = yes], AC_MSG_ERROR([can not build freestanding tests]))
+AS_IF([test "$enable_checks" = yes -a "$enable_freestanding" = yes], AC_MSG_ERROR([can not build freestanding tests]))
+AS_IF([test "$enable_checks" = yes -a "$enable_prefix"       = no ], AC_MSG_ERROR([can not build tests without prefix]))
 
 
 
@@ -110,6 +113,7 @@ AM_CONDITIONAL([ASM_X86],                [test "$host_cpu" = i386 -o "$host_cpu"
 
 dnl Features (enabled by default)
 AM_CONDITIONAL([ENABLE_FLOAT],           [test "$enable_float"           = yes])
+AM_CONDITIONAL([ENABLE_PREFIX],          [test "$enable_prefix"          = yes])
 AM_CONDITIONAL([ENABLE_WERROR],          [test "$enable_werror"          = yes])
 
 dnl Features (disabled by default)
@@ -137,12 +141,16 @@ AS_IF([test "$host_cpu" = x86_64],            [AC_DEFINE([ASM_X86],             
 
 dnl Features (enabled by default)
 AS_IF([test "$enable_float"           = yes], [AC_DEFINE([ENABLE_FLOAT],           [1], [enabled floating-point arithmetic])])
+AS_IF([test "$enable_prefix"          = yes], [AC_DEFINE([ENABLE_PREFIX],          [1], [enabled prefix])])
 AS_IF([test "$enable_werror"          = yes], [AC_DEFINE([ENABLE_WERROR],          [1], [enabled -Werror])])
 
 dnl Features (disabled by default)
 AS_IF([test "$enable_freestanding"    = yes], [AC_DEFINE([ENABLE_FREESTANDING],    [1], [build for freestanding environment])])
 AS_IF([test "$enable_checks"          = yes], [AC_DEFINE([ENABLE_CHECKS],          [1], [enabled usual tests])])
 AS_IF([test "$enable_checks_cppcheck" = yes], [AC_DEFINE([ENABLE_CHECKS_CPPCHECK], [1], [enabled cppcheck])])
+
+dnl Additional
+AS_IF([test "$enable_prefix"          = yes], [AC_DEFINE([LIBCLAYER_PREFIX], [libclayer_], [prefix])])
 
 
 
