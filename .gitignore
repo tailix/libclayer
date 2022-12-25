@@ -43,8 +43,6 @@
 
 /Makefile.in
 /include/Makefile.in
-/libc/Makefile.in
-/libc/include/Makefile.in
 /tests/Makefile.in
 
 ###########################################
@@ -71,8 +69,6 @@
 
 /Makefile
 /include/Makefile
-/libc/Makefile
-/libc/include/Makefile
 /tests/Makefile
 
 /libkernaux.pc

@@ -114,7 +114,7 @@ jobs:
       - name: autogen
         run: ./autogen.sh
       - name: configure
-        run: ./configure --host='i386-elf' --enable-freestanding --with-libc CC="$(which i686-linux-gnu-gcc)"
+        run: ./configure --host='i386-elf' --enable-freestanding CC="$(which i686-linux-gnu-gcc)"
       - name: make
         run: make
 

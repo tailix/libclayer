@@ -4,21 +4,11 @@ include $(top_srcdir)/make/checks.am
 ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = autogen.sh CONTRIBUTING.md sha256sums.txt
 
-SUBDIRS = include
-
-if WITH_LIBC
-# FIXME: after "make clean" libc is not rebuiling
-SUBDIRS += libc
-endif
-
-SUBDIRS += .
+SUBDIRS = include .
 
 if ENABLE_CHECKS
 SUBDIRS += tests
 endif
-
-libc/libc.la:
-	$(MAKE) $(AM_MAKEFLAGS) -C $(top_builddir)/libc libc.la
 
 AM_CFLAGS += -DKERNAUX_ACCESS_PRIVATE
 
@@ -34,13 +24,24 @@ endif
 ##################
 
 libkernaux_la_LDFLAGS = -version-info @PACKAGE_VERSION_SO@
-libkernaux_la_LIBADD =
-libkernaux_la_SOURCES = src/xxxxx.c
 
-########
-# libc #
-########
+libkernaux_la_SOURCES = \
+	src/ctype.c \
+	src/errno.c \
+	src/kernaux.c \
+	src/stdlib.c \
+	src/string.c
 
-if WITH_LIBC
-libkernaux_la_LIBADD += libc/libc.la
+if ASM_I386
+libkernaux_la_SOURCES += \
+	src/asm/i386/longjmp.S \
+	src/asm/i386/setjmp.S
 endif
+
+if ASM_X86_64
+libkernaux_la_SOURCES += \
+	src/asm/x86_64/longjmp.S \
+	src/asm/x86_64/setjmp.S
+endif
+
+# TODO: implement setjmp/longjmp for riscv64

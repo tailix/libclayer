@@ -27,8 +27,6 @@ AC_CONFIG_FILES([
   Makefile
   libkernaux.pc
   include/Makefile
-  libc/Makefile
-  libc/include/Makefile
   tests/Makefile
 ])
 
@@ -52,13 +50,9 @@ AC_ARG_ENABLE([freestanding],    AS_HELP_STRING([--enable-freestanding],    [bui
 AC_ARG_ENABLE([checks],          AS_HELP_STRING([--enable-checks],          [enable usual tests]))
 AC_ARG_ENABLE([checks-all],      AS_HELP_STRING([--enable-checks-all],      [enable all checks]))
 AC_ARG_ENABLE([checks-cppcheck], AS_HELP_STRING([--enable-checks-cppcheck], [enable cppcheck]))
-AC_ARG_ENABLE([split-libc],      AS_HELP_STRING([--enable-split-libc],      [split off libc]))
 
 dnl Features (with parameter)
 AC_ARG_ENABLE([pkg-config],      AS_HELP_STRING([--enable-pkg-config@<:@=PATH@:>@], [install pkg-config files @<:@PATH='${libdir}/pkgconfig'@:>@]))
-
-dnl Packages (disabled by default)
-AC_ARG_WITH(  [libc],            AS_HELP_STRING([--with-libc],              [with libc replacement]))
 
 
 
@@ -88,14 +82,10 @@ AS_IF([test "$enable_freestanding"    = yes], [enable_freestanding=yes],    [ena
 AS_IF([test "$enable_checks"          = yes], [enable_checks=yes],          [enable_checks=no])
 AS_IF([test "$enable_checks_all"      = yes], [enable_checks_all=yes],      [enable_checks_all=no])
 AS_IF([test "$enable_checks_cppcheck" = yes], [enable_checks_cppcheck=yes], [enable_checks_cppcheck=no])
-AS_IF([test "$enable_split_libc"      = yes], [enable_split_libc=yes],      [enable_split_libc=no])
 
 dnl Features (with parameter)
 AS_IF([test "$enable_pkg_config"      = yes], [enable_pkg_config='${libdir}/pkgconfig'])
 AS_IF([test "$enable_pkg_config"      = no ], [enable_pkg_config=''])
-
-dnl Packages (disabled by default)
-AS_IF([test "$with_libc"              = yes], [with_libc=yes],              [with_libc=no])
 
 
 
@@ -104,7 +94,6 @@ AS_IF([test "$with_libc"              = yes], [with_libc=yes],              [wit
 #############
 
 AS_IF([test "$enable_checks"   = yes -a "$enable_freestanding" = yes], AC_MSG_ERROR([can not build freestanding tests]))
-AS_IF([test "$enable_checks"   = yes -a "$with_libc"           = yes], AC_MSG_ERROR([can not use package `libc' with tests]))
 
 
 
@@ -128,13 +117,9 @@ dnl Features (disabled by default)
 AM_CONDITIONAL([ENABLE_FREESTANDING],    [test "$enable_freestanding"    = yes])
 AM_CONDITIONAL([ENABLE_CHECKS],          [test "$enable_checks"          = yes])
 AM_CONDITIONAL([ENABLE_CHECKS_CPPCHECK], [test "$enable_checks_cppcheck" = yes])
-AM_CONDITIONAL([ENABLE_SPLIT_LIBC],      [test "$enable_split_libc"      = yes])
 
 dnl Features (with parameter)
 AM_CONDITIONAL([ENABLE_PKG_CONFIG],      [test ! -z "$enable_pkg_config"])
-
-dnl Packages (disabled by default)
-AM_CONDITIONAL([WITH_LIBC],              [test "$with_libc"              = yes])
 
 
 
@@ -159,10 +144,6 @@ dnl Features (disabled by default)
 AS_IF([test "$enable_freestanding"    = yes], [AC_DEFINE([ENABLE_FREESTANDING],    [1], [build for freestanding environment])])
 AS_IF([test "$enable_checks"          = yes], [AC_DEFINE([ENABLE_CHECKS],          [1], [enabled usual tests])])
 AS_IF([test "$enable_checks_cppcheck" = yes], [AC_DEFINE([ENABLE_CHECKS_CPPCHECK], [1], [enabled cppcheck])])
-AS_IF([test "$enable_split_libc"      = yes], [AC_DEFINE([ENABLE_SPLIT_LIBC],      [1], [split off libc])])
-
-dnl Packages (disabled by default)
-AS_IF([test "$with_libc"              = yes], [AC_DEFINE([WITH_LIBC],              [1], [with libc replacement])])
 
 
 

@@ -38,14 +38,13 @@ We use [semantic versioning](https://semver.org) for stable APIs. Stable APIs
 may only change when major version number is increased (or minor while major is
 zero). Work-in-progress APIs can change at any time.
 
-* libc replacement (*work in progress*)
-  * [ctype.h](/libc/include/ctype.h)
-  * [errno.h](/libc/include/errno.h)
-  * [inttypes.h](/libc/include/inttypes.h)
-  * [setjmp.h](/libc/include/setjmp.h)
-  * [stdlib.h](/libc/include/stdlib.h)
-  * [string.h](/libc/include/string.h)
-  * [sys/types.h](/libc/include/sys/types.h)
+* [ctype.h](/include/ctype.h)
+* [errno.h](/include/errno.h)
+* [inttypes.h](/include/inttypes.h)
+* [setjmp.h](/include/setjmp.h)
+* [stdlib.h](/include/stdlib.h)
+* [string.h](/include/string.h)
+* [sys/types.h](/include/sys/types.h)
 
 
 
@@ -69,11 +68,6 @@ stable options.
   Jinja2
 * `--enable-pkg-config[=PATH]` - install pkg-config files
   [PATH='${libdir}/pkgconfig']
-
-#### Packages
-
-* `--with-libc` - provides the replacement for some standard C functions.
-  Useful in freestanding environment, where no libc is present.
 
 ### Default options
 
@@ -129,7 +123,6 @@ without it in `$PATH`:
   --host='i386-elf' \
   --disable-shared \
   --enable-freestanding \
-  --with-libc \
   CC="$(which i386-elf-gcc)"
 ```
 
