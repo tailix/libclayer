@@ -39,7 +39,6 @@ may only change when major version number is increased (or minor while major is
 zero). Work-in-progress APIs can change at any time.
 
 * Basic features
-  * [Feature macros](/include/kernaux/version.h.in) (*work in progress*)
   * [Runtime environment](/include/kernaux/runtime.h) (*non-breaking since* **0.7.0**)
   * [Macros](/include/kernaux/macro.h) (*non-breaking since* **0.6.0**)
   * Stack trace *(planned)*

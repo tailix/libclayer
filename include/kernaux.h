@@ -8,4 +8,3 @@
 #include <kernaux/arch/x86_64.h>
 #include <kernaux/macro.h>
 #include <kernaux/runtime.h>
-#include <kernaux/version.h>
