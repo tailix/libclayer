@@ -33,7 +33,6 @@ AC_CONFIG_FILES([
 AM_INIT_AUTOMAKE([1.16 subdir-objects])
 
 AC_SUBST([PACKAGE_DESCR], ['libc for both hosted and freestanding environments'])
-AC_SUBST([PACKAGE_VERSION_SO], m4_normalize(m4_include([VERSION_SO])))
 
 
 

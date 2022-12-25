@@ -21,8 +21,6 @@ endif
 # Required files #
 ##################
 
-libclayer_la_LDFLAGS = -version-info @PACKAGE_VERSION_SO@
-
 libclayer_la_SOURCES = \
 	src/ctype.c \
 	src/errno.c \
