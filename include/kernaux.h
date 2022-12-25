@@ -9,8 +9,6 @@
 #include <kernaux/elf.h>
 #include <kernaux/macro.h>
 #include <kernaux/mbr.h>
-#include <kernaux/ntoa.h>
 #include <kernaux/pfa.h>
 #include <kernaux/runtime.h>
-#include <kernaux/units.h>
 #include <kernaux/version.h>

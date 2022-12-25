@@ -40,32 +40,6 @@ test_mbr_SOURCES = \
 	test_mbr.c
 endif
 
-#############
-# test_ntoa #
-#############
-
-if WITH_NTOA
-TESTS += test_ntoa
-test_ntoa_LDADD = $(top_builddir)/libkernaux.la
-test_ntoa_SOURCES = \
-	main.c \
-	test_ntoa.c
-endif
-
-####################
-# test_ntoa_assert #
-####################
-
-if ENABLE_ASSERT
-if WITH_NTOA
-TESTS += test_ntoa_assert
-test_ntoa_assert_LDADD = $(top_builddir)/libkernaux.la
-test_ntoa_assert_SOURCES = \
-	main.c \
-	test_ntoa_assert.c
-endif
-endif
-
 ############
 # test_pfa #
 ############
@@ -90,16 +64,4 @@ test_pfa_assert_SOURCES = \
 	main.c \
 	test_pfa_assert.c
 endif
-endif
-
-####################
-# test_units_human #
-####################
-
-if WITH_UNITS
-TESTS += test_units_human
-test_units_human_LDADD = $(top_builddir)/libkernaux.la
-test_units_human_SOURCES = \
-	main.c \
-	test_units_human.c
 endif

@@ -1,8 +1,5 @@
 /test_arch_i386
 /test_elf
 /test_mbr
-/test_ntoa
-/test_ntoa_assert
 /test_pfa
 /test_pfa_assert
-/test_units_human

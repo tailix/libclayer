@@ -13,10 +13,8 @@ include/kernaux/macro.h
 include/kernaux/macro/packing_end.run
 include/kernaux/macro/packing_start.run
 include/kernaux/mbr.h
-include/kernaux/ntoa.h
 include/kernaux/pfa.h
 include/kernaux/runtime.h
-include/kernaux/units.h
 include/kernaux/version.h
 lib/libkernaux.a
 lib/libkernaux.so

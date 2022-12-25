@@ -48,10 +48,6 @@ zero). Work-in-progress APIs can change at any time.
 * Data formats
   * [ELF](/include/kernaux/elf.h) (*work in progress*)
   * [MBR](/include/kernaux/mbr.h) (*work in progress*)
-* Utilities
-  * [Measurement units utils](/include/kernaux/units.h) (*work in progress*)
-* Usual functions
-  * [itoa/ftoa replacement](/include/kernaux/ntoa.h) (*non-breaking since* **0.4.0**)
 * libc replacement (*work in progress*)
   * [ctype.h](/libc/include/ctype.h)
   * [errno.h](/libc/include/errno.h)
@@ -134,7 +130,6 @@ explicitly included, use `--without-all`.
 * `--with[out]-arch-riscv64` - architecture riscv64
 * `--with[out]-arch-x86-64` - architecture x86-64
 * `--with[out]-asm` - kernel assembler helpers
-* `--with[out]-ntoa` - itoa/ftoa
 
 
 

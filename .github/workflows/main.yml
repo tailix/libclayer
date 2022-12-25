@@ -91,14 +91,12 @@ jobs:
         packages:
           - without: 'all'
           - without: 'io'
-          - without: 'ntoa'
-            dependencies: '--without-units'
     steps:
       - uses: actions/checkout@v2
       - name: autogen
         run: ./autogen.sh
       - name: configure
-        run: ./configure --enable-checks --without-${{matrix.packages.without}} ${{matrix.packages.dependencies}}
+        run: ./configure --enable-checks --without-${{matrix.packages.without}}
       - name: make
         run: make
       - name: check

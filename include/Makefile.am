@@ -14,8 +14,6 @@ nobase_include_HEADERS = \
 	kernaux/macro/packing_end.run        \
 	kernaux/macro/packing_start.run      \
 	kernaux/mbr.h                        \
-	kernaux/ntoa.h                       \
 	kernaux/pfa.h                        \
 	kernaux/runtime.h                    \
-	kernaux/units.h                      \
 	kernaux/version.h

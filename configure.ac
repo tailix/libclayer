@@ -68,9 +68,7 @@ AC_ARG_WITH(  [arch-x86-64],     AS_HELP_STRING([--without-arch-x86-64],    [wit
 AC_ARG_WITH(  [asm],             AS_HELP_STRING([--without-asm],            [without kernel assembler helpers]))
 AC_ARG_WITH(  [elf],             AS_HELP_STRING([--without-elf],            [without ELF utils]))
 AC_ARG_WITH(  [mbr],             AS_HELP_STRING([--without-mbr],            [without MBR utils]))
-AC_ARG_WITH(  [ntoa],            AS_HELP_STRING([--without-ntoa],           [without itoa/ftoa]))
 AC_ARG_WITH(  [pfa],             AS_HELP_STRING([--without-pfa],            [without Page Frame Allocator]))
-AC_ARG_WITH(  [units],           AS_HELP_STRING([--without-units],          [without measurement units utils]))
 
 dnl Packages (disabled by default)
 AC_ARG_WITH(  [libc],            AS_HELP_STRING([--with-libc],              [with libc replacement]))
@@ -104,9 +102,7 @@ if test -z "$with_arch_x86_64";  then with_arch_x86_64=no;  fi
 if test -z "$with_asm";          then with_asm=no;          fi
 if test -z "$with_elf";          then with_elf=no;          fi
 if test -z "$with_mbr";          then with_mbr=no;          fi
-if test -z "$with_ntoa";         then with_ntoa=no;         fi
 if test -z "$with_pfa";          then with_pfa=no;          fi
-if test -z "$with_units";        then with_units=no;        fi
 ])
 AS_IF([test "$with_all" = no], do_without_all)
 
@@ -141,9 +137,7 @@ AS_IF([test "$with_arch_x86_64"       = no ], [with_arch_x86_64=no],        [wit
 AS_IF([test "$with_asm"               = no ], [with_asm=no],                [with_asm=yes])
 AS_IF([test "$with_elf"               = no ], [with_elf=no],                [with_elf=yes])
 AS_IF([test "$with_mbr"               = no ], [with_mbr=no],                [with_mbr=yes])
-AS_IF([test "$with_ntoa"              = no ], [with_ntoa=no],               [with_ntoa=yes])
 AS_IF([test "$with_pfa"               = no ], [with_pfa=no],                [with_pfa=yes])
-AS_IF([test "$with_units"             = no ], [with_units=no],              [with_units=yes])
 
 dnl Packages (disabled by default)
 AS_IF([test "$with_libc"              = yes], [with_libc=yes],              [with_libc=no])
@@ -156,8 +150,6 @@ AS_IF([test "$with_libc"              = yes], [with_libc=yes],              [wit
 
 AS_IF([test "$enable_checks"   = yes -a "$enable_freestanding" = yes], AC_MSG_ERROR([can not build freestanding tests]))
 AS_IF([test "$enable_checks"   = yes -a "$with_libc"           = yes], AC_MSG_ERROR([can not use package `libc' with tests]))
-
-AS_IF([test "$with_units"  = yes -a "$with_ntoa"       = no], AC_MSG_ERROR([package `units' requires package `ntoa']))
 
 
 
@@ -194,9 +186,7 @@ AM_CONDITIONAL([WITH_ARCH_X86_64],       [test "$with_arch_x86_64"       = yes])
 AM_CONDITIONAL([WITH_ASM],               [test "$with_asm"               = yes])
 AM_CONDITIONAL([WITH_ELF],               [test "$with_elf"               = yes])
 AM_CONDITIONAL([WITH_MBR],               [test "$with_mbr"               = yes])
-AM_CONDITIONAL([WITH_NTOA],              [test "$with_ntoa"              = yes])
 AM_CONDITIONAL([WITH_PFA],               [test "$with_pfa"               = yes])
-AM_CONDITIONAL([WITH_UNITS],             [test "$with_units"             = yes])
 
 dnl Packages (disabled by default)
 AM_CONDITIONAL([WITH_LIBC],              [test "$with_libc"              = yes])
@@ -237,9 +227,7 @@ AS_IF([test "$with_arch_x86_64"       = yes], [AC_DEFINE([WITH_ARCH_X86_64],    
 AS_IF([test "$with_asm"               = yes], [AC_DEFINE([WITH_ASM],               [1], [with kernel assembler helpers])])
 AS_IF([test "$with_elf"               = yes], [AC_DEFINE([WITH_ELF],               [1], [with ELF utils])])
 AS_IF([test "$with_mbr"               = yes], [AC_DEFINE([WITH_MBR],               [1], [with MBR utils])])
-AS_IF([test "$with_ntoa"              = yes], [AC_DEFINE([WITH_NTOA],              [1], [with ntoa])])
 AS_IF([test "$with_pfa"               = yes], [AC_DEFINE([WITH_PFA],               [1], [with Page Frame Allocator])])
-AS_IF([test "$with_units",            = yes], [AC_DEFINE([WITH_UNITS],             [1], [with measurement units utils])])
 
 dnl Packages (disabled by default)
 AS_IF([test "$with_libc"              = yes], [AC_DEFINE([WITH_LIBC],              [1], [with libc replacement])])
@@ -263,9 +251,7 @@ AS_IF([test "$with_arch_riscv64" = no], [AC_SUBST([comment_line_arch_riscv64], [
 AS_IF([test "$with_arch_x86_64"  = no], [AC_SUBST([comment_line_arch_x86_64],  [//])])
 AS_IF([test "$with_elf"          = no], [AC_SUBST([comment_line_elf],          [//])])
 AS_IF([test "$with_mbr"          = no], [AC_SUBST([comment_line_mbr],          [//])])
-AS_IF([test "$with_ntoa"         = no], [AC_SUBST([comment_line_ntoa],         [//])])
 AS_IF([test "$with_pfa"          = no], [AC_SUBST([comment_line_pfa],          [//])])
-AS_IF([test "$with_units"        = no], [AC_SUBST([comment_line_units],        [//])])
 
 
 

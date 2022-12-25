@@ -79,12 +79,6 @@ endif
 if WITH_MBR
 libkernaux_la_SOURCES += src/mbr.c
 endif
-if WITH_NTOA
-libkernaux_la_SOURCES += src/ntoa.c
-endif
 if WITH_PFA
 libkernaux_la_SOURCES += src/pfa.c
-endif
-if WITH_UNITS
-libkernaux_la_SOURCES += src/units.c
 endif
