@@ -77,9 +77,6 @@ endif
 # Default packages #
 ####################
 
-if WITH_CMDLINE
-libkernaux_la_SOURCES += src/cmdline.c
-endif
 if WITH_ELF
 libkernaux_la_SOURCES += src/elf.c
 endif

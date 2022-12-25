@@ -16,20 +16,6 @@ test_arch_i386_SOURCES = \
 	test_arch_i386.c
 endif
 
-################
-# test_cmdline #
-################
-
-if WITH_CMDLINE
-TESTS += test_cmdline
-test_cmdline_LDADD = $(top_builddir)/libkernaux.la
-test_cmdline_SOURCES = \
-	main.c \
-	test_cmdline.c \
-	cmdline_test.h \
-	cmdline_test.c
-endif
-
 ############
 # test_elf #
 ############

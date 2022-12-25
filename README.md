@@ -49,7 +49,6 @@ zero). Work-in-progress APIs can change at any time.
   * [Mutex](/include/kernaux/generic/mutex.h) (*non-breaking since* **0.5.0**)
 * Algorithms
   * [Free list memory allocator](/include/kernaux/free_list.h) (*non-breaking since* **0.5.0**)
-  * [Simple command line parser](/include/kernaux/cmdline.h) (*non-breaking since* **0.2.0**)
   * [Page Frame Allocator](/include/kernaux/pfa.h) (*work in progress*)
 * Data formats
   * [ELF](/include/kernaux/elf.h) (*work in progress*)
@@ -143,7 +142,6 @@ explicitly included, use `--without-all`.
 * `--with[out]-arch-riscv64` - architecture riscv64
 * `--with[out]-arch-x86-64` - architecture x86-64
 * `--with[out]-asm` - kernel assembler helpers
-* `--with[out]-cmdline` - command line parser
 * `--with[out]-free-list` - free list memory allocator
 * `--with[out]-memmap` - memory map
 * `--with[out]-ntoa` - itoa/ftoa

@@ -1,5 +1,4 @@
 /test_arch_i386
-/test_cmdline
 /test_elf
 /test_free_list
 /test_mbr
