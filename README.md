@@ -45,8 +45,6 @@ zero). Work-in-progress APIs can change at any time.
   * Stack trace *(planned)*
 * Algorithms
   * [Page Frame Allocator](/include/kernaux/pfa.h) (*work in progress*)
-* Data formats
-  * [MBR](/include/kernaux/mbr.h) (*work in progress*)
 * libc replacement (*work in progress*)
   * [ctype.h](/libc/include/ctype.h)
   * [errno.h](/libc/include/errno.h)

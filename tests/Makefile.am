@@ -17,18 +17,6 @@ test_arch_i386_SOURCES = \
 endif
 
 ############
-# test_mbr #
-############
-
-if WITH_MBR
-TESTS += test_mbr
-test_mbr_LDADD = $(top_builddir)/libkernaux.la
-test_mbr_SOURCES = \
-	main.c \
-	test_mbr.c
-endif
-
-############
 # test_pfa #
 ############
 
