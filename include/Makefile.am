@@ -9,7 +9,6 @@ nobase_include_HEADERS = \
 	kernaux/asm/riscv64.h                \
 	kernaux/asm/x86_64.h                 \
 	kernaux/asm/x86.h                    \
-	kernaux/elf.h                        \
 	kernaux/macro.h                      \
 	kernaux/macro/packing_end.run        \
 	kernaux/macro/packing_start.run      \

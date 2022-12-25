@@ -46,7 +46,6 @@ zero). Work-in-progress APIs can change at any time.
 * Algorithms
   * [Page Frame Allocator](/include/kernaux/pfa.h) (*work in progress*)
 * Data formats
-  * [ELF](/include/kernaux/elf.h) (*work in progress*)
   * [MBR](/include/kernaux/mbr.h) (*work in progress*)
 * libc replacement (*work in progress*)
   * [ctype.h](/libc/include/ctype.h)

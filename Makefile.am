@@ -73,9 +73,6 @@ endif
 # Default packages #
 ####################
 
-if WITH_ELF
-libkernaux_la_SOURCES += src/elf.c
-endif
 if WITH_MBR
 libkernaux_la_SOURCES += src/mbr.c
 endif

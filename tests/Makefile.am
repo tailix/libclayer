@@ -17,18 +17,6 @@ test_arch_i386_SOURCES = \
 endif
 
 ############
-# test_elf #
-############
-
-if WITH_ELF
-TESTS += test_elf
-test_elf_LDADD = $(top_builddir)/libkernaux.la
-test_elf_SOURCES = \
-	main.c \
-	test_elf.c
-endif
-
-############
 # test_mbr #
 ############
 

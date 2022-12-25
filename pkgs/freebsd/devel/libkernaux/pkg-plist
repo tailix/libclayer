@@ -8,7 +8,6 @@ include/kernaux/asm/i386.h
 include/kernaux/asm/riscv64.h
 include/kernaux/asm/x86.h
 include/kernaux/asm/x86_64.h
-include/kernaux/elf.h
 include/kernaux/macro.h
 include/kernaux/macro/packing_end.run
 include/kernaux/macro/packing_start.run
