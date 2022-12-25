@@ -92,8 +92,7 @@ jobs:
           - without: 'all'
           - without: 'io'
           - without: 'ntoa'
-            dependencies: '--without-printf --without-units'
-          - without: 'printf'
+            dependencies: '--without-units'
           - without: 'memmap'
     steps:
       - uses: actions/checkout@v2

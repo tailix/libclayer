@@ -7,8 +7,6 @@
 @comment_line_memmap@#define KERNAUX_VERSION_WITH_MEMMAP
 @comment_line_ntoa@#define KERNAUX_VERSION_WITH_NTOA
 @comment_line_pfa@#define KERNAUX_VERSION_WITH_PFA
-@comment_line_printf@#define KERNAUX_VERSION_WITH_PRINTF
-@comment_line_printf_fmt@#define KERNAUX_VERSION_WITH_PRINTF_FMT
 @comment_line_units@#define KERNAUX_VERSION_WITH_UNITS
 
 #endif

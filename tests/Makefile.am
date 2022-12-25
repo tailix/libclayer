@@ -104,18 +104,6 @@ test_pfa_assert_SOURCES = \
 endif
 endif
 
-###############
-# test_printf #
-###############
-
-if WITH_PRINTF
-TESTS += test_printf
-test_printf_LDADD = $(top_builddir)/libkernaux.la
-test_printf_SOURCES = \
-	main.c \
-	test_printf.c
-endif
-
 ####################
 # test_units_human #
 ####################

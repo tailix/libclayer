@@ -72,8 +72,6 @@ AC_ARG_WITH(  [mbr],             AS_HELP_STRING([--without-mbr],            [wit
 AC_ARG_WITH(  [memmap],          AS_HELP_STRING([--without-memmap],         [without memory map]))
 AC_ARG_WITH(  [ntoa],            AS_HELP_STRING([--without-ntoa],           [without itoa/ftoa]))
 AC_ARG_WITH(  [pfa],             AS_HELP_STRING([--without-pfa],            [without Page Frame Allocator]))
-AC_ARG_WITH(  [printf],          AS_HELP_STRING([--without-printf],         [without printf]))
-AC_ARG_WITH(  [printf-fmt],      AS_HELP_STRING([--without-printf-fmt],     [without printf format parser]))
 AC_ARG_WITH(  [units],           AS_HELP_STRING([--without-units],          [without measurement units utils]))
 
 dnl Packages (disabled by default)
@@ -112,8 +110,6 @@ if test -z "$with_mbr";          then with_mbr=no;          fi
 if test -z "$with_memmap";       then with_memmap=no;       fi
 if test -z "$with_ntoa";         then with_ntoa=no;         fi
 if test -z "$with_pfa";          then with_pfa=no;          fi
-if test -z "$with_printf";       then with_printf=no;       fi
-if test -z "$with_printf_fmt";   then with_printf_fmt=no;   fi
 if test -z "$with_units";        then with_units=no;        fi
 ])
 AS_IF([test "$with_all" = no], do_without_all)
@@ -153,8 +149,6 @@ AS_IF([test "$with_mbr"               = no ], [with_mbr=no],                [wit
 AS_IF([test "$with_memmap"            = no ], [with_memmap=no],             [with_memmap=yes])
 AS_IF([test "$with_ntoa"              = no ], [with_ntoa=no],               [with_ntoa=yes])
 AS_IF([test "$with_pfa"               = no ], [with_pfa=no],                [with_pfa=yes])
-AS_IF([test "$with_printf"            = no ], [with_printf=no],             [with_printf=yes])
-AS_IF([test "$with_printf_fmt"        = no ], [with_printf_fmt=no],         [with_printf_fmt=yes])
 AS_IF([test "$with_units"             = no ], [with_units=no],              [with_units=yes])
 
 dnl Packages (disabled by default)
@@ -169,8 +163,6 @@ AS_IF([test "$with_libc"              = yes], [with_libc=yes],              [wit
 AS_IF([test "$enable_checks"   = yes -a "$enable_freestanding" = yes], AC_MSG_ERROR([can not build freestanding tests]))
 AS_IF([test "$enable_checks"   = yes -a "$with_libc"           = yes], AC_MSG_ERROR([can not use package `libc' with tests]))
 
-AS_IF([test "$with_printf" = yes -a "$with_ntoa"       = no], AC_MSG_ERROR([package `printf' requires package `ntoa']))
-AS_IF([test "$with_printf" = yes -a "$with_printf_fmt" = no], AC_MSG_ERROR([package `printf' requires package `printf-fmt']))
 AS_IF([test "$with_units"  = yes -a "$with_ntoa"       = no], AC_MSG_ERROR([package `units' requires package `ntoa']))
 
 
@@ -212,8 +204,6 @@ AM_CONDITIONAL([WITH_MBR],               [test "$with_mbr"               = yes])
 AM_CONDITIONAL([WITH_MEMMAP],            [test "$with_memmap"            = yes])
 AM_CONDITIONAL([WITH_NTOA],              [test "$with_ntoa"              = yes])
 AM_CONDITIONAL([WITH_PFA],               [test "$with_pfa"               = yes])
-AM_CONDITIONAL([WITH_PRINTF],            [test "$with_printf"            = yes])
-AM_CONDITIONAL([WITH_PRINTF_FMT],        [test "$with_printf_fmt"        = yes])
 AM_CONDITIONAL([WITH_UNITS],             [test "$with_units"             = yes])
 
 dnl Packages (disabled by default)
@@ -259,8 +249,6 @@ AS_IF([test "$with_mbr"               = yes], [AC_DEFINE([WITH_MBR],            
 AS_IF([test "$with_memmap"            = yes], [AC_DEFINE([WITH_MEMMAP],            [1], [with memory map])])
 AS_IF([test "$with_ntoa"              = yes], [AC_DEFINE([WITH_NTOA],              [1], [with ntoa])])
 AS_IF([test "$with_pfa"               = yes], [AC_DEFINE([WITH_PFA],               [1], [with Page Frame Allocator])])
-AS_IF([test "$with_printf"            = yes], [AC_DEFINE([WITH_PRINTF],            [1], [with printf])])
-AS_IF([test "$with_printf_fmt"        = yes], [AC_DEFINE([WITH_PRINTF_FMT],        [1], [with printf format parser])])
 AS_IF([test "$with_units",            = yes], [AC_DEFINE([WITH_UNITS],             [1], [with measurement units utils])])
 
 dnl Packages (disabled by default)
@@ -289,8 +277,6 @@ AS_IF([test "$with_mbr"          = no], [AC_SUBST([comment_line_mbr],          [
 AS_IF([test "$with_memmap"       = no], [AC_SUBST([comment_line_memmap],       [//])])
 AS_IF([test "$with_ntoa"         = no], [AC_SUBST([comment_line_ntoa],         [//])])
 AS_IF([test "$with_pfa"          = no], [AC_SUBST([comment_line_pfa],          [//])])
-AS_IF([test "$with_printf"       = no], [AC_SUBST([comment_line_printf],       [//])])
-AS_IF([test "$with_printf_fmt"   = no], [AC_SUBST([comment_line_printf_fmt],   [//])])
 AS_IF([test "$with_units"        = no], [AC_SUBST([comment_line_units],        [//])])
 
 

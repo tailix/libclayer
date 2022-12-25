@@ -21,8 +21,6 @@ nobase_include_HEADERS = \
 	kernaux/memmap.h                     \
 	kernaux/ntoa.h                       \
 	kernaux/pfa.h                        \
-	kernaux/printf.h                     \
-	kernaux/printf_fmt.h                 \
 	kernaux/runtime.h                    \
 	kernaux/units.h                      \
 	kernaux/version.h

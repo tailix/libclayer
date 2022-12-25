@@ -56,10 +56,8 @@ zero). Work-in-progress APIs can change at any time.
 * Utilities
   * [Measurement units utils](/include/kernaux/units.h) (*work in progress*)
   * [Memory map](/include/kernaux/memmap.h) (*non-breaking since* **0.7.0**)
-  * [printf format parser](/include/kernaux/printf_fmt.h) (*non-breaking since* **0.6.0**)
 * Usual functions
   * [itoa/ftoa replacement](/include/kernaux/ntoa.h) (*non-breaking since* **0.4.0**)
-  * [printf replacement](/include/kernaux/printf.h) (*non-breaking since* **0.5.0**)
 * libc replacement (*work in progress*)
   * [ctype.h](/libc/include/ctype.h)
   * [errno.h](/libc/include/errno.h)
@@ -145,7 +143,6 @@ explicitly included, use `--without-all`.
 * `--with[out]-free-list` - free list memory allocator
 * `--with[out]-memmap` - memory map
 * `--with[out]-ntoa` - itoa/ftoa
-* `--with[out]-printf` - printf
 
 
 

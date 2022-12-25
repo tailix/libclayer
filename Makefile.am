@@ -95,12 +95,6 @@ endif
 if WITH_PFA
 libkernaux_la_SOURCES += src/pfa.c
 endif
-if WITH_PRINTF
-libkernaux_la_SOURCES += src/printf.c
-endif
-if WITH_PRINTF_FMT
-libkernaux_la_SOURCES += src/printf_fmt.c
-endif
 if WITH_UNITS
 libkernaux_la_SOURCES += src/units.c
 endif

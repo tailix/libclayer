@@ -17,9 +17,8 @@ extern "C" {
 #define KERNAUX_UNUSED        __attribute__((unused))
 #define KERNAUX_USED          __attribute__((used))
 
-#define KERNAUX_ALIGNED(num)      __attribute__((aligned(num)))
-#define KERNAUX_PRINTF(fmt, rest) __attribute__((format(printf, fmt, rest)))
-#define KERNAUX_SECTION(name)     __attribute__((section(name)))
+#define KERNAUX_ALIGNED(num)  __attribute__((aligned(num)))
+#define KERNAUX_SECTION(name) __attribute__((section(name)))
 
 #ifdef __TINYC__
 #   define KERNAUX_PACKED
