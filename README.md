@@ -39,7 +39,6 @@ may only change when major version number is increased (or minor while major is
 zero). Work-in-progress APIs can change at any time.
 
 * Basic features
-  * [Runtime environment](/include/kernaux/runtime.h) (*non-breaking since* **0.7.0**)
   * [Macros](/include/kernaux/macro.h) (*non-breaking since* **0.6.0**)
   * Stack trace *(planned)*
 * libc replacement (*work in progress*)
@@ -61,19 +60,6 @@ zero). Work-in-progress APIs can change at any time.
   in a file where you implement an inherited type.
 * `KERNAUX_BITFIELDS` - enable bitfields in packed structs. It doesn't follow
   the C standard and may be incompatible with some compilers.
-
-### Global variables
-
-```c
-// in <kernaux/runtime.h>
-void (*kernaux_assert_cb)(const char *file, int line, const char *msg)
-```
-
-Assertion callback. It's better to always set it to some function which always
-interrupts the execution, even when assertions are disabled. It may for example
-call `abort()` in hosted environment, raise an exception in Ruby, panic in Rust
-or power off the machine in freestanding environment. It may also log the error
-location and message.
 
 
 

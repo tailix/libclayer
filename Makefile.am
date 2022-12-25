@@ -35,7 +35,7 @@ endif
 
 libkernaux_la_LDFLAGS = -version-info @PACKAGE_VERSION_SO@
 libkernaux_la_LIBADD =
-libkernaux_la_SOURCES = src/runtime.c
+libkernaux_la_SOURCES = src/xxxxx.c
 
 ########
 # libc #
