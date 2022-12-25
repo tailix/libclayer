@@ -31,8 +31,6 @@ AC_CONFIG_FILES([
   libc/include/Makefile
   include/kernaux/version.h
   tests/Makefile
-  tests/test_multiboot2_header_print.c
-  tests/test_multiboot2_info_print.c
 ])
 
 AM_INIT_AUTOMAKE([1.16 subdir-objects])
@@ -73,7 +71,6 @@ AC_ARG_WITH(  [elf],             AS_HELP_STRING([--without-elf],            [wit
 AC_ARG_WITH(  [free-list],       AS_HELP_STRING([--without-free-list],      [without free list memory allocator]))
 AC_ARG_WITH(  [mbr],             AS_HELP_STRING([--without-mbr],            [without MBR utils]))
 AC_ARG_WITH(  [memmap],          AS_HELP_STRING([--without-memmap],         [without memory map]))
-AC_ARG_WITH(  [multiboot2],      AS_HELP_STRING([--without-multiboot2],     [without Multiboot 2 utils]))
 AC_ARG_WITH(  [ntoa],            AS_HELP_STRING([--without-ntoa],           [without itoa/ftoa]))
 AC_ARG_WITH(  [pfa],             AS_HELP_STRING([--without-pfa],            [without Page Frame Allocator]))
 AC_ARG_WITH(  [printf],          AS_HELP_STRING([--without-printf],         [without printf]))
@@ -115,7 +112,6 @@ if test -z "$with_elf";          then with_elf=no;          fi
 if test -z "$with_free_list";    then with_free_list=no;    fi
 if test -z "$with_mbr";          then with_mbr=no;          fi
 if test -z "$with_memmap";       then with_memmap=no;       fi
-if test -z "$with_multiboot2";   then with_multiboot2=no;   fi
 if test -z "$with_ntoa";         then with_ntoa=no;         fi
 if test -z "$with_pfa";          then with_pfa=no;          fi
 if test -z "$with_printf";       then with_printf=no;       fi
@@ -158,7 +154,6 @@ AS_IF([test "$with_elf"               = no ], [with_elf=no],                [wit
 AS_IF([test "$with_free_list"         = no ], [with_free_list=no],          [with_free_list=yes])
 AS_IF([test "$with_mbr"               = no ], [with_mbr=no],                [with_mbr=yes])
 AS_IF([test "$with_memmap"            = no ], [with_memmap=no],             [with_memmap=yes])
-AS_IF([test "$with_multiboot2"        = no ], [with_multiboot2=no],         [with_multiboot2=yes])
 AS_IF([test "$with_ntoa"              = no ], [with_ntoa=no],               [with_ntoa=yes])
 AS_IF([test "$with_pfa"               = no ], [with_pfa=no],                [with_pfa=yes])
 AS_IF([test "$with_printf"            = no ], [with_printf=no],             [with_printf=yes])
@@ -219,7 +214,6 @@ AM_CONDITIONAL([WITH_ELF],               [test "$with_elf"               = yes])
 AM_CONDITIONAL([WITH_FREE_LIST],         [test "$with_free_list"         = yes])
 AM_CONDITIONAL([WITH_MBR],               [test "$with_mbr"               = yes])
 AM_CONDITIONAL([WITH_MEMMAP],            [test "$with_memmap"            = yes])
-AM_CONDITIONAL([WITH_MULTIBOOT2],        [test "$with_multiboot2"        = yes])
 AM_CONDITIONAL([WITH_NTOA],              [test "$with_ntoa"              = yes])
 AM_CONDITIONAL([WITH_PFA],               [test "$with_pfa"               = yes])
 AM_CONDITIONAL([WITH_PRINTF],            [test "$with_printf"            = yes])
@@ -268,7 +262,6 @@ AS_IF([test "$with_elf"               = yes], [AC_DEFINE([WITH_ELF],            
 AS_IF([test "$with_free_list"         = yes], [AC_DEFINE([WITH_FREE_LIST],         [1], [with free list memory allocator])])
 AS_IF([test "$with_mbr"               = yes], [AC_DEFINE([WITH_MBR],               [1], [with MBR utils])])
 AS_IF([test "$with_memmap"            = yes], [AC_DEFINE([WITH_MEMMAP],            [1], [with memory map])])
-AS_IF([test "$with_multiboot2"        = yes], [AC_DEFINE([WITH_MULTIBOOT2],        [1], [with Multiboot 2 utils])])
 AS_IF([test "$with_ntoa"              = yes], [AC_DEFINE([WITH_NTOA],              [1], [with ntoa])])
 AS_IF([test "$with_pfa"               = yes], [AC_DEFINE([WITH_PFA],               [1], [with Page Frame Allocator])])
 AS_IF([test "$with_printf"            = yes], [AC_DEFINE([WITH_PRINTF],            [1], [with printf])])
@@ -300,7 +293,6 @@ AS_IF([test "$with_elf"          = no], [AC_SUBST([comment_line_elf],          [
 AS_IF([test "$with_free_list"    = no], [AC_SUBST([comment_line_free_list],    [//])])
 AS_IF([test "$with_mbr"          = no], [AC_SUBST([comment_line_mbr],          [//])])
 AS_IF([test "$with_memmap"       = no], [AC_SUBST([comment_line_memmap],       [//])])
-AS_IF([test "$with_multiboot2"   = no], [AC_SUBST([comment_line_multiboot2],   [//])])
 AS_IF([test "$with_ntoa"         = no], [AC_SUBST([comment_line_ntoa],         [//])])
 AS_IF([test "$with_pfa"          = no], [AC_SUBST([comment_line_pfa],          [//])])
 AS_IF([test "$with_printf"       = no], [AC_SUBST([comment_line_printf],       [//])])

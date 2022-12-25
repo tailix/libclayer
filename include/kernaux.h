@@ -15,7 +15,6 @@
 #include <kernaux/macro.h>
 #include <kernaux/mbr.h>
 #include <kernaux/memmap.h>
-#include <kernaux/multiboot2.h>
 #include <kernaux/ntoa.h>
 #include <kernaux/pfa.h>
 #include <kernaux/printf.h>

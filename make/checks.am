@@ -20,7 +20,6 @@ CPPCHECK_INC = \
   -I$(top_srcdir)/include
 
 CPPCHECK_SUPPRESS = \
-  --suppress='unusedStructMember:$(top_srcdir)/tests/test_multiboot2_info_*.c' \
   --suppress='unusedVariable'
 
 CPPCHECK_PATHS = \

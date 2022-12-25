@@ -20,16 +20,6 @@ nobase_include_HEADERS = \
 	kernaux/macro/packing_start.run      \
 	kernaux/mbr.h                        \
 	kernaux/memmap.h                     \
-	kernaux/multiboot2.h                 \
-	kernaux/multiboot2/header_enums.h    \
-	kernaux/multiboot2/header_helpers.h  \
-	kernaux/multiboot2/header_is_valid.h \
-	kernaux/multiboot2/header_macro.h    \
-	kernaux/multiboot2/header_print.h    \
-	kernaux/multiboot2/info_enums.h      \
-	kernaux/multiboot2/info_helpers.h    \
-	kernaux/multiboot2/info_is_valid.h   \
-	kernaux/multiboot2/info_print.h      \
 	kernaux/ntoa.h                       \
 	kernaux/pfa.h                        \
 	kernaux/printf.h                     \
