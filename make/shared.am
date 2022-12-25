@@ -6,8 +6,7 @@ AM_CFLAGS = \
 	-Wall \
 	-Wextra \
 	-I$(top_builddir)/include \
-	-I$(top_srcdir)/include \
-	-D_POSIX_C_SOURCE=200809L
+	-I$(top_srcdir)/include
 
 if ENABLE_WERROR
 AM_CFLAGS += -Werror
