@@ -34,7 +34,7 @@ jobs:
       - name: autogen
         run: ./autogen.sh
       - name: configure
-        run: ./configure ${{matrix.assert}} --enable-checks --enable-checks-python CC='${{matrix.cc}}' CFLAGS='${{matrix.opt}}'
+        run: ./configure ${{matrix.assert}} --enable-checks CC='${{matrix.cc}}' CFLAGS='${{matrix.opt}}'
       - name: make
         run: make
       - name: check
@@ -76,7 +76,7 @@ jobs:
       - name: autogen
         run: ./autogen.sh
       - name: configure
-        run: ./configure --host='${{matrix.cross.arch}}-unknown-elf' --enable-checks --enable-checks-python CC='${{matrix.cross.cprefix}}gcc'
+        run: ./configure --host='${{matrix.cross.arch}}-unknown-elf' --enable-checks CC='${{matrix.cross.cprefix}}gcc'
       - name: make
         run: make
       - name: check
@@ -100,7 +100,7 @@ jobs:
       - name: autogen
         run: ./autogen.sh
       - name: configure
-        run: ./configure --enable-checks --enable-checks-python --without-${{matrix.packages.without}} ${{matrix.packages.dependencies}}
+        run: ./configure --enable-checks --without-${{matrix.packages.without}} ${{matrix.packages.dependencies}}
       - name: make
         run: make
       - name: check
@@ -139,7 +139,7 @@ jobs:
       - name: extract
         run: tar -xzf "libkernaux-$(cat VERSION).tar.gz"
       - name: configure
-        run: cd "libkernaux-$(cat VERSION)" && ./configure --enable-checks --enable-checks-python
+        run: cd "libkernaux-$(cat VERSION)" && ./configure --enable-checks
       - name: make
         run: cd "libkernaux-$(cat VERSION)" && make
       - name: check

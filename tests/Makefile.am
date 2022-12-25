@@ -108,30 +108,6 @@ test_cmdline_SOURCES = \
 	cmdline_test.c
 endif
 
-####################
-# test_cmdline_gen #
-####################
-
-if ENABLE_CHECKS_PYTHON
-if WITH_CMDLINE
-TESTS += test_cmdline_gen
-test_cmdline_gen_LDADD = $(top_builddir)/libkernaux.la
-test_cmdline_gen_SOURCES = \
-	main.c \
-	test_cmdline_gen.c \
-	cmdline_gen.py \
-	cmdline_gen.jinja \
-	$(top_srcdir)/fixtures/cmdline.yml \
-	cmdline_test.h \
-	cmdline_test.c
-endif
-endif
-
-CLEANFILES += test_cmdline_gen.c
-
-test_cmdline_gen.c: $(top_srcdir)/tests/cmdline_gen.py $(top_srcdir)/tests/cmdline_gen.jinja $(top_srcdir)/fixtures/cmdline.yml
-	$(PYTHON) $(top_srcdir)/tests/cmdline_gen.py $(top_srcdir)/tests/cmdline_gen.jinja $(top_srcdir)/fixtures/cmdline.yml test_cmdline_gen.c
-
 ############
 # test_elf #
 ############
@@ -355,51 +331,6 @@ test_printf_SOURCES = \
 	main.c \
 	test_printf.c
 endif
-
-#######################
-# test_printf_fmt_gen #
-#######################
-
-if ENABLE_CHECKS_PYTHON
-if WITH_PRINTF_FMT
-TESTS += test_printf_fmt_gen
-test_printf_fmt_gen_LDADD = $(top_builddir)/libkernaux.la
-test_printf_fmt_gen_SOURCES = \
-	main.c \
-	test_printf_fmt_gen.c \
-	printf_fmt_gen.py \
-	printf_fmt_gen.jinja \
-	$(top_srcdir)/fixtures/printf_fmt.yml
-endif
-endif
-
-CLEANFILES += test_printf_fmt_gen.c
-
-test_printf_fmt_gen.c: $(top_srcdir)/tests/printf_fmt_gen.py $(top_srcdir)/tests/printf_fmt_gen.jinja $(top_srcdir)/fixtures/printf_fmt.yml
-	$(PYTHON) $(top_srcdir)/tests/printf_fmt_gen.py $(top_srcdir)/tests/printf_fmt_gen.jinja $(top_srcdir)/fixtures/printf_fmt.yml test_printf_fmt_gen.c
-
-###################
-# test_printf_gen #
-###################
-
-if ENABLE_CHECKS_PYTHON
-if WITH_PRINTF
-TESTS += test_printf_gen
-test_printf_gen_LDADD = $(top_builddir)/libkernaux.la
-test_printf_gen_SOURCES = \
-	main.c \
-	test_printf_gen.c \
-	printf_gen.py \
-	printf_gen.jinja \
-	$(top_srcdir)/fixtures/printf.yml \
-	$(top_srcdir)/fixtures/printf_orig.yml
-endif
-endif
-
-CLEANFILES += test_printf_gen.c
-
-test_printf_gen.c: $(top_srcdir)/tests/printf_gen.py $(top_srcdir)/tests/printf_gen.jinja $(top_srcdir)/fixtures/printf.yml $(top_srcdir)/fixtures/printf_orig.yml
-	$(PYTHON) $(top_srcdir)/tests/printf_gen.py $(top_srcdir)/tests/printf_gen.jinja $(top_srcdir)/fixtures/printf.yml $(top_srcdir)/fixtures/printf_orig.yml test_printf_gen.c
 
 ####################
 # test_units_human #

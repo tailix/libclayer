@@ -9,11 +9,7 @@ packages:
   - autoconf-2.71
   - automake-1.16.5
   - cppcheck
-  - libyaml
   - m4
-  - py3-pip
-  - py3-wheel
-  - python3
   - wget
 environment:
   AUTOCONF_VERSION: '2.71'
@@ -26,8 +22,6 @@ tasks:
       ./configure
       make
       doas make install
-  - dependencies: |
-      pip3 install --user Jinja2 PyYAML
   - build: |
       cd libkernaux
       ./autogen.sh

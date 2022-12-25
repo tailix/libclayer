@@ -135,7 +135,6 @@ stable options.
 * `--enable-checks` - enable usual tests and examples
 * `--enable-checks-all` - enable all checks
 * `--enable-checks-cppcheck` - enable cppcheck
-* `--enable-checks-python` - enable tests that require Python 3 with YAML and
   Jinja2
 * `--enable-pkg-config[=PATH]` - install pkg-config files
   [PATH='${libdir}/pkgconfig']
