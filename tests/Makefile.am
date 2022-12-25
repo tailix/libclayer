@@ -28,18 +28,6 @@ test_elf_SOURCES = \
 	test_elf.c
 endif
 
-##################
-# test_free_list #
-##################
-
-if WITH_FREE_LIST
-TESTS += test_free_list
-test_free_list_LDADD = $(top_builddir)/libkernaux.la
-test_free_list_SOURCES = \
-	main.c \
-	test_free_list.c
-endif
-
 ############
 # test_mbr #
 ############

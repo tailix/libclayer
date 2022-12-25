@@ -93,7 +93,6 @@ jobs:
           - without: 'io'
           - without: 'ntoa'
             dependencies: '--without-units'
-          - without: 'memmap'
     steps:
       - uses: actions/checkout@v2
       - name: autogen

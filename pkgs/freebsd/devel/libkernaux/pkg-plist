@@ -9,15 +9,10 @@ include/kernaux/asm/riscv64.h
 include/kernaux/asm/x86.h
 include/kernaux/asm/x86_64.h
 include/kernaux/elf.h
-include/kernaux/free_list.h
-include/kernaux/generic/display.h
-include/kernaux/generic/malloc.h
-include/kernaux/generic/mutex.h
 include/kernaux/macro.h
 include/kernaux/macro/packing_end.run
 include/kernaux/macro/packing_start.run
 include/kernaux/mbr.h
-include/kernaux/memmap.h
 include/kernaux/ntoa.h
 include/kernaux/pfa.h
 include/kernaux/runtime.h

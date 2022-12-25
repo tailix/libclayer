@@ -35,11 +35,7 @@ endif
 
 libkernaux_la_LDFLAGS = -version-info @PACKAGE_VERSION_SO@
 libkernaux_la_LIBADD =
-libkernaux_la_SOURCES = \
-	src/generic/display.c \
-	src/generic/malloc.c \
-	src/generic/mutex.c \
-	src/runtime.c
+libkernaux_la_SOURCES = src/runtime.c
 
 ########
 # libc #
@@ -80,14 +76,8 @@ endif
 if WITH_ELF
 libkernaux_la_SOURCES += src/elf.c
 endif
-if WITH_FREE_LIST
-libkernaux_la_SOURCES += src/free_list.c
-endif
 if WITH_MBR
 libkernaux_la_SOURCES += src/mbr.c
-endif
-if WITH_MEMMAP
-libkernaux_la_SOURCES += src/memmap.c
 endif
 if WITH_NTOA
 libkernaux_la_SOURCES += src/ntoa.c

@@ -67,9 +67,7 @@ AC_ARG_WITH(  [arch-riscv64],    AS_HELP_STRING([--without-arch-riscv64],   [wit
 AC_ARG_WITH(  [arch-x86-64],     AS_HELP_STRING([--without-arch-x86-64],    [without architecture x86-64]))
 AC_ARG_WITH(  [asm],             AS_HELP_STRING([--without-asm],            [without kernel assembler helpers]))
 AC_ARG_WITH(  [elf],             AS_HELP_STRING([--without-elf],            [without ELF utils]))
-AC_ARG_WITH(  [free-list],       AS_HELP_STRING([--without-free-list],      [without free list memory allocator]))
 AC_ARG_WITH(  [mbr],             AS_HELP_STRING([--without-mbr],            [without MBR utils]))
-AC_ARG_WITH(  [memmap],          AS_HELP_STRING([--without-memmap],         [without memory map]))
 AC_ARG_WITH(  [ntoa],            AS_HELP_STRING([--without-ntoa],           [without itoa/ftoa]))
 AC_ARG_WITH(  [pfa],             AS_HELP_STRING([--without-pfa],            [without Page Frame Allocator]))
 AC_ARG_WITH(  [units],           AS_HELP_STRING([--without-units],          [without measurement units utils]))
@@ -105,9 +103,7 @@ if test -z "$with_arch_riscv64"; then with_arch_riscv64=no; fi
 if test -z "$with_arch_x86_64";  then with_arch_x86_64=no;  fi
 if test -z "$with_asm";          then with_asm=no;          fi
 if test -z "$with_elf";          then with_elf=no;          fi
-if test -z "$with_free_list";    then with_free_list=no;    fi
 if test -z "$with_mbr";          then with_mbr=no;          fi
-if test -z "$with_memmap";       then with_memmap=no;       fi
 if test -z "$with_ntoa";         then with_ntoa=no;         fi
 if test -z "$with_pfa";          then with_pfa=no;          fi
 if test -z "$with_units";        then with_units=no;        fi
@@ -144,9 +140,7 @@ AS_IF([test "$with_arch_riscv64"      = no ], [with_arch_riscv64=no],       [wit
 AS_IF([test "$with_arch_x86_64"       = no ], [with_arch_x86_64=no],        [with_arch_x86_64=yes])
 AS_IF([test "$with_asm"               = no ], [with_asm=no],                [with_asm=yes])
 AS_IF([test "$with_elf"               = no ], [with_elf=no],                [with_elf=yes])
-AS_IF([test "$with_free_list"         = no ], [with_free_list=no],          [with_free_list=yes])
 AS_IF([test "$with_mbr"               = no ], [with_mbr=no],                [with_mbr=yes])
-AS_IF([test "$with_memmap"            = no ], [with_memmap=no],             [with_memmap=yes])
 AS_IF([test "$with_ntoa"              = no ], [with_ntoa=no],               [with_ntoa=yes])
 AS_IF([test "$with_pfa"               = no ], [with_pfa=no],                [with_pfa=yes])
 AS_IF([test "$with_units"             = no ], [with_units=no],              [with_units=yes])
@@ -199,9 +193,7 @@ AM_CONDITIONAL([WITH_ARCH_RISCV64],      [test "$with_arch_riscv64"      = yes])
 AM_CONDITIONAL([WITH_ARCH_X86_64],       [test "$with_arch_x86_64"       = yes])
 AM_CONDITIONAL([WITH_ASM],               [test "$with_asm"               = yes])
 AM_CONDITIONAL([WITH_ELF],               [test "$with_elf"               = yes])
-AM_CONDITIONAL([WITH_FREE_LIST],         [test "$with_free_list"         = yes])
 AM_CONDITIONAL([WITH_MBR],               [test "$with_mbr"               = yes])
-AM_CONDITIONAL([WITH_MEMMAP],            [test "$with_memmap"            = yes])
 AM_CONDITIONAL([WITH_NTOA],              [test "$with_ntoa"              = yes])
 AM_CONDITIONAL([WITH_PFA],               [test "$with_pfa"               = yes])
 AM_CONDITIONAL([WITH_UNITS],             [test "$with_units"             = yes])
@@ -244,9 +236,7 @@ AS_IF([test "$with_arch_riscv64"      = yes], [AC_DEFINE([WITH_ARCH_RISCV64],   
 AS_IF([test "$with_arch_x86_64"       = yes], [AC_DEFINE([WITH_ARCH_X86_64],       [1], [with architecture x86_64])])
 AS_IF([test "$with_asm"               = yes], [AC_DEFINE([WITH_ASM],               [1], [with kernel assembler helpers])])
 AS_IF([test "$with_elf"               = yes], [AC_DEFINE([WITH_ELF],               [1], [with ELF utils])])
-AS_IF([test "$with_free_list"         = yes], [AC_DEFINE([WITH_FREE_LIST],         [1], [with free list memory allocator])])
 AS_IF([test "$with_mbr"               = yes], [AC_DEFINE([WITH_MBR],               [1], [with MBR utils])])
-AS_IF([test "$with_memmap"            = yes], [AC_DEFINE([WITH_MEMMAP],            [1], [with memory map])])
 AS_IF([test "$with_ntoa"              = yes], [AC_DEFINE([WITH_NTOA],              [1], [with ntoa])])
 AS_IF([test "$with_pfa"               = yes], [AC_DEFINE([WITH_PFA],               [1], [with Page Frame Allocator])])
 AS_IF([test "$with_units",            = yes], [AC_DEFINE([WITH_UNITS],             [1], [with measurement units utils])])
@@ -272,9 +262,7 @@ AS_IF([test "$with_arch_i386"    = no], [AC_SUBST([comment_line_arch_i386],    [
 AS_IF([test "$with_arch_riscv64" = no], [AC_SUBST([comment_line_arch_riscv64], [//])])
 AS_IF([test "$with_arch_x86_64"  = no], [AC_SUBST([comment_line_arch_x86_64],  [//])])
 AS_IF([test "$with_elf"          = no], [AC_SUBST([comment_line_elf],          [//])])
-AS_IF([test "$with_free_list"    = no], [AC_SUBST([comment_line_free_list],    [//])])
 AS_IF([test "$with_mbr"          = no], [AC_SUBST([comment_line_mbr],          [//])])
-AS_IF([test "$with_memmap"       = no], [AC_SUBST([comment_line_memmap],       [//])])
 AS_IF([test "$with_ntoa"         = no], [AC_SUBST([comment_line_ntoa],         [//])])
 AS_IF([test "$with_pfa"          = no], [AC_SUBST([comment_line_pfa],          [//])])
 AS_IF([test "$with_units"        = no], [AC_SUBST([comment_line_units],        [//])])

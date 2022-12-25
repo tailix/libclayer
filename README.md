@@ -43,19 +43,13 @@ zero). Work-in-progress APIs can change at any time.
   * [Runtime environment](/include/kernaux/runtime.h) (*non-breaking since* **0.7.0**)
   * [Macros](/include/kernaux/macro.h) (*non-breaking since* **0.6.0**)
   * Stack trace *(planned)*
-* Generic types
-  * [Display](/include/kernaux/generic/display.h) (*non-breaking since* **0.7.0**)
-  * [Memory allocator](/include/kernaux/generic/malloc.h) (*non-breaking since* **0.5.0**)
-  * [Mutex](/include/kernaux/generic/mutex.h) (*non-breaking since* **0.5.0**)
 * Algorithms
-  * [Free list memory allocator](/include/kernaux/free_list.h) (*non-breaking since* **0.5.0**)
   * [Page Frame Allocator](/include/kernaux/pfa.h) (*work in progress*)
 * Data formats
   * [ELF](/include/kernaux/elf.h) (*work in progress*)
   * [MBR](/include/kernaux/mbr.h) (*work in progress*)
 * Utilities
   * [Measurement units utils](/include/kernaux/units.h) (*work in progress*)
-  * [Memory map](/include/kernaux/memmap.h) (*non-breaking since* **0.7.0**)
 * Usual functions
   * [itoa/ftoa replacement](/include/kernaux/ntoa.h) (*non-breaking since* **0.4.0**)
 * libc replacement (*work in progress*)
@@ -140,8 +134,6 @@ explicitly included, use `--without-all`.
 * `--with[out]-arch-riscv64` - architecture riscv64
 * `--with[out]-arch-x86-64` - architecture x86-64
 * `--with[out]-asm` - kernel assembler helpers
-* `--with[out]-free-list` - free list memory allocator
-* `--with[out]-memmap` - memory map
 * `--with[out]-ntoa` - itoa/ftoa
 
 

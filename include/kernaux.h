@@ -7,13 +7,8 @@
 #include <kernaux/arch/riscv64.h>
 #include <kernaux/arch/x86_64.h>
 #include <kernaux/elf.h>
-#include <kernaux/free_list.h>
-#include <kernaux/generic/display.h>
-#include <kernaux/generic/malloc.h>
-#include <kernaux/generic/mutex.h>
 #include <kernaux/macro.h>
 #include <kernaux/mbr.h>
-#include <kernaux/memmap.h>
 #include <kernaux/ntoa.h>
 #include <kernaux/pfa.h>
 #include <kernaux/runtime.h>
