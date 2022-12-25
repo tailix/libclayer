@@ -7,6 +7,14 @@ extern "C" {
 
 #include <stddef.h>
 
+#ifndef LIBCLAYER_PREFIX
+#define LIBCLAYER(name) name
+#else
+#define LIBCLAYER(name) LIBCLAYER2(LIBCLAYER_PREFIX, name)
+#define LIBCLAYER2(prefix, name) LIBCLAYER3(prefix, name)
+#define LIBCLAYER3(prefix, name) prefix ## name
+#endif
+
 struct Libclayer {
     __attribute__((noreturn)) void (*abort)();
     __attribute__((noreturn)) void (*exit)(int status);

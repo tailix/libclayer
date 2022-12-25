@@ -4,4 +4,4 @@
 
 #include <errno.h>
 
-int errno = 0;
+int LIBCLAYER(errno) = 0;

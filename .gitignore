@@ -64,8 +64,8 @@
 /conftest.err
 
 /tests/test-suite.log
-/tests/test_*.log
-/tests/test_*.trs
+/tests/*.log
+/tests/*.trs
 
 /Makefile
 /include/Makefile

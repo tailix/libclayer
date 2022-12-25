@@ -5,13 +5,15 @@
 extern "C" {
 #endif
 
-int isdigit(int c);
-int islower(int c);
-int isspace(int c);
-int isupper(int c);
+#include <libclayer.h>
 
-int tolower(int c);
-int toupper(int c);
+int LIBCLAYER(isdigit)(int c);
+int LIBCLAYER(islower)(int c);
+int LIBCLAYER(isspace)(int c);
+int LIBCLAYER(isupper)(int c);
+
+int LIBCLAYER(tolower)(int c);
+int LIBCLAYER(toupper)(int c);
 
 #ifdef __cplusplus
 }

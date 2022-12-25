@@ -5,9 +5,11 @@
 extern "C" {
 #endif
 
+#include <libclayer.h>
+
 #define ERANGE 1
 
-extern int errno;
+extern int LIBCLAYER(errno);
 
 #ifdef __cplusplus
 }
