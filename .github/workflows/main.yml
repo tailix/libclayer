@@ -24,7 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        assert: ['--disable-assert', '--enable-assert']
         cc: ['gcc', 'clang', 'tcc']
         opt: ['', '-O0', '-O3']
     steps:
@@ -34,7 +33,7 @@ jobs:
       - name: autogen
         run: ./autogen.sh
       - name: configure
-        run: ./configure ${{matrix.assert}} --enable-checks CC='${{matrix.cc}}' CFLAGS='${{matrix.opt}}'
+        run: ./configure --enable-checks CC='${{matrix.cc}}' CFLAGS='${{matrix.opt}}'
       - name: make
         run: make
       - name: check
@@ -106,9 +105,6 @@ jobs:
 
   freestanding:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        assert: ['--disable-assert', '--enable-assert']
     steps:
       - uses: actions/checkout@v2
       - name: apt update
@@ -118,7 +114,7 @@ jobs:
       - name: autogen
         run: ./autogen.sh
       - name: configure
-        run: ./configure --host='i386-elf' ${{matrix.assert}} --enable-freestanding --with-libc CC="$(which i686-linux-gnu-gcc)"
+        run: ./configure --host='i386-elf' --enable-freestanding --with-libc CC="$(which i686-linux-gnu-gcc)"
       - name: make
         run: make
 
