@@ -6,7 +6,7 @@ check: $(MY_CHECKS)
 if ENABLE_CHECKS_CPPCHECK
 MY_CHECKS += check-cppcheck
 check-cppcheck:
-	$(CPPCHECK) $(CPPCHECK_ARGS) $(CPPCHECK_INC) $(CPPCHECK_SUPPRESS) $(CPPCHECK_PATHS)
+	$(CPPCHECK) $(CPPCHECK_ARGS) $(CPPCHECK_INC) $(CPPCHECK_PATHS)
 
 CPPCHECK_ARGS = \
   --quiet            \
@@ -17,10 +17,7 @@ CPPCHECK_ARGS = \
 
 CPPCHECK_INC = \
   -I$(top_builddir)/include \
-  -I$(top_srcdir)/include
-
-CPPCHECK_SUPPRESS = \
-  --suppress='unusedVariable'
+    -I$(top_srcdir)/include
 
 CPPCHECK_PATHS = \
   $(top_builddir)/include  \
