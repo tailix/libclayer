@@ -1,1 +1,0 @@
-#include <kernaux/macro.h>

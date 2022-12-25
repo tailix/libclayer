@@ -38,9 +38,6 @@ We use [semantic versioning](https://semver.org) for stable APIs. Stable APIs
 may only change when major version number is increased (or minor while major is
 zero). Work-in-progress APIs can change at any time.
 
-* Basic features
-  * [Macros](/include/kernaux/macro.h) (*non-breaking since* **0.6.0**)
-  * Stack trace *(planned)*
 * libc replacement (*work in progress*)
   * [ctype.h](/libc/include/ctype.h)
   * [errno.h](/libc/include/errno.h)
@@ -49,17 +46,6 @@ zero). Work-in-progress APIs can change at any time.
   * [stdlib.h](/libc/include/stdlib.h)
   * [string.h](/libc/include/string.h)
   * [sys/types.h](/libc/include/sys/types.h)
-
-### Definitions
-
-`#define` the following C preprocessor macros before including `<kernaux.h>` and
-`<kernaux/*.h>` files. They have effect on your code, not the library code.
-
-* `KERNAUX_ACCESS_PRIVATE` - disable access modifier "private". Don't do this!
-* `KERNAUX_ACCESS_PROTECTED` - disable access modifier "protected". Only do this
-  in a file where you implement an inherited type.
-* `KERNAUX_BITFIELDS` - enable bitfields in packed structs. It doesn't follow
-  the C standard and may be incompatible with some compilers.
 
 
 

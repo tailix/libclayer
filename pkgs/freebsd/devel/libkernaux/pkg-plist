@@ -1,7 +1,3 @@
-include/kernaux.h
-include/kernaux/macro.h
-include/kernaux/macro/packing_end.run
-include/kernaux/macro/packing_start.run
 lib/libkernaux.a
 lib/libkernaux.so
 lib/libkernaux.so.0

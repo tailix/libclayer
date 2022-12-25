@@ -1,3 +1,0 @@
-#ifdef __TINYC__
-#pragma pack(push, 1)
-#endif
