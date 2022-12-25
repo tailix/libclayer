@@ -12,10 +12,8 @@ extern "C" {
 
 int atoi(const char *str);
 
-__attribute__((noreturn))
-void abort();
-__attribute__((noreturn))
-void exit(int status);
+void abort() __attribute__((noreturn));
+void exit(int status) __attribute__((noreturn));
 
 void *calloc(size_t nmemb, size_t size);
 void free(void *ptr);
