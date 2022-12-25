@@ -1,5 +1,5 @@
-#ifndef KERNAUX_INCLUDED_LIBC
-#define KERNAUX_INCLUDED_LIBC
+#ifndef _LIBCLAYER_H
+#define _LIBCLAYER_H 1
 
 #ifdef __cplusplus
 extern "C" {
@@ -7,7 +7,7 @@ extern "C" {
 
 #include <stddef.h>
 
-struct KernAux_Libc {
+struct Libclayer {
     void (*abort)() __attribute__((noreturn));
     void (*exit)(int status) __attribute__((noreturn));
 
@@ -17,7 +17,7 @@ struct KernAux_Libc {
     void *(*realloc)(void *ptr, size_t size);
 };
 
-extern struct KernAux_Libc kernaux_libc;
+extern struct Libclayer libclayer;
 
 #ifdef __cplusplus
 }

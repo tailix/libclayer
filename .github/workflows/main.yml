@@ -129,12 +129,12 @@ jobs:
       - name: dist
         run: make dist
       - name: extract
-        run: tar -xzf "libkernaux-$(cat VERSION).tar.gz"
+        run: tar -xzf "libclayer-$(cat VERSION).tar.gz"
       - name: configure
-        run: cd "libkernaux-$(cat VERSION)" && ./configure --enable-checks
+        run: cd "libclayer-$(cat VERSION)" && ./configure --enable-checks
       - name: make
-        run: cd "libkernaux-$(cat VERSION)" && make
+        run: cd "libclayer-$(cat VERSION)" && make
       - name: check
-        run: cd "libkernaux-$(cat VERSION)" && make check || (./make/test-suite-log && false)
+        run: cd "libclayer-$(cat VERSION)" && make check || (./make/test-suite-log && false)
       - name: install
-        run: cd "libkernaux-$(cat VERSION)" && sudo make install
+        run: cd "libclayer-$(cat VERSION)" && sudo make install

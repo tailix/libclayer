@@ -1,19 +1,17 @@
-libkernaux
-==========
+libclayer
+=========
 
-[![Build status](https://github.com/tailix/libkernaux/actions/workflows/main.yml/badge.svg)](https://github.com/tailix/libkernaux/actions/workflows/main.yml)
-[![Build status (FreeBSD)](https://api.cirrus-ci.com/github/tailix/libkernaux.svg?task=Main%20(FreeBSD))](https://cirrus-ci.com/github/tailix/libkernaux)
+[![Build status](https://github.com/tailix/libclayer/actions/workflows/main.yml/badge.svg)](https://github.com/tailix/libclayer/actions/workflows/main.yml)
+[![Build status (FreeBSD)](https://api.cirrus-ci.com/github/tailix/libclayer.svg?task=Main%20(FreeBSD))](https://cirrus-ci.com/github/tailix/libclayer)
 
-Auxiliary library for kernel development.
-
-[Topic on OSDev.org forum](https://forum.osdev.org/viewtopic.php?f=1&t=37958).
+libc for both hosted and freestanding environments.
 
 
 
 Table of contents
 -----------------
 
-* [Overview](#libkernaux)
+* [Overview](#libclayer)
 * [Table of contents](#table-of-contents)
 * [API](#api)
   * [Headers](#headers)

@@ -10,36 +10,34 @@ if ENABLE_CHECKS
 SUBDIRS += tests
 endif
 
-AM_CFLAGS += -DKERNAUX_ACCESS_PRIVATE
-
-lib_LTLIBRARIES = libkernaux.la
+lib_LTLIBRARIES = libclayer.la
 
 if ENABLE_PKG_CONFIG
 pkgconfigdir = @pkgconfdir@
-pkgconfig_DATA = libkernaux.pc
+pkgconfig_DATA = libclayer.pc
 endif
 
 ##################
 # Required files #
 ##################
 
-libkernaux_la_LDFLAGS = -version-info @PACKAGE_VERSION_SO@
+libclayer_la_LDFLAGS = -version-info @PACKAGE_VERSION_SO@
 
-libkernaux_la_SOURCES = \
+libclayer_la_SOURCES = \
 	src/ctype.c \
 	src/errno.c \
-	src/kernaux.c \
+	src/clayer.c \
 	src/stdlib.c \
 	src/string.c
 
 if ASM_I386
-libkernaux_la_SOURCES += \
+libclayer_la_SOURCES += \
 	src/asm/i386/longjmp.S \
 	src/asm/i386/setjmp.S
 endif
 
 if ASM_X86_64
-libkernaux_la_SOURCES += \
+libclayer_la_SOURCES += \
 	src/asm/x86_64/longjmp.S \
 	src/asm/x86_64/setjmp.S
 endif

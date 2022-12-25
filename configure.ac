@@ -11,11 +11,11 @@ LT_PREREQ([2.4.6])
 # Initialize Autoconf & Automake #
 ##################################
 
-AC_INIT([libkernaux],
+AC_INIT([libclayer],
   m4_normalize(m4_include([VERSION])),
-  [https://github.com/tailix/libkernaux/issues],
-  [libkernaux],
-  [https://github.com/tailix/libkernaux])
+  [https://github.com/tailix/libclayer/issues],
+  [libclayer],
+  [https://github.com/tailix/libclayer])
 
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
@@ -25,14 +25,14 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([src/xxxxx.c])
 AC_CONFIG_FILES([
   Makefile
-  libkernaux.pc
+  libclayer.pc
   include/Makefile
   tests/Makefile
 ])
 
 AM_INIT_AUTOMAKE([1.16 subdir-objects])
 
-AC_SUBST([PACKAGE_DESCR], ['Auxiliary library for kernel development'])
+AC_SUBST([PACKAGE_DESCR], ['libc for both hosted and freestanding environments'])
 AC_SUBST([PACKAGE_VERSION_SO], m4_normalize(m4_include([VERSION_SO])))
 
 

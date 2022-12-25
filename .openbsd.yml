@@ -4,7 +4,7 @@
 image: openbsd/7.2
 arch: amd64
 sources:
-  - https://github.com/tailix/libkernaux.git
+  - https://github.com/tailix/libclayer.git
 packages:
   - autoconf-2.71
   - automake-1.16.5
@@ -23,11 +23,11 @@ tasks:
       make
       doas make install
   - build: |
-      cd libkernaux
+      cd libclayer
       ./autogen.sh
       ./configure --enable-checks-all CFLAGS='-O3'
       make
       doas make install
   - test: |
-      cd libkernaux
+      cd libclayer
       make check

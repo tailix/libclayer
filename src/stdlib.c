@@ -2,7 +2,7 @@
 #include "config.h"
 #endif
 
-#include <kernaux/libc.h>
+#include <libclayer.h>
 
 #include <ctype.h>
 #include <stdbool.h>
@@ -12,13 +12,13 @@
 void exit(const int status)
 {
     // Custom implementation
-    kernaux_libc.exit(status);
+    libclayer.exit(status);
 }
 
 void abort()
 {
     // Custom implementation
-    if (kernaux_libc.abort) kernaux_libc.abort();
+    if (libclayer.abort) libclayer.abort();
 
     // Default implementation
     exit(EXIT_FAILURE);
@@ -27,7 +27,7 @@ void abort()
 void *calloc(const size_t nmemb, const size_t size)
 {
     // Custom implementation
-    if (kernaux_libc.calloc) return kernaux_libc.calloc(nmemb, size);
+    if (libclayer.calloc) return libclayer.calloc(nmemb, size);
 
     // Default implementation
     const size_t total_size = nmemb * size;
@@ -41,19 +41,19 @@ void *calloc(const size_t nmemb, const size_t size)
 void free(void *const ptr)
 {
     // Custom implementation
-    kernaux_libc.free(ptr);
+    libclayer.free(ptr);
 }
 
 void *malloc(const size_t size)
 {
     // Custom implementation
-    return kernaux_libc.malloc(size);
+    return libclayer.malloc(size);
 }
 
 void *realloc(void *const ptr, const size_t size)
 {
     // Custom implementation
-    return kernaux_libc.realloc(ptr, size);
+    return libclayer.realloc(ptr, size);
 }
 
 int atoi(const char *str)

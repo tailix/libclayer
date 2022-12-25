@@ -7,5 +7,5 @@ Name: @PACKAGE_NAME@
 Description: @PACKAGE_DESCR@
 URL: @PACKAGE_URL@
 Version: @PACKAGE_VERSION@
-Libs: -L${libdir} -lkernaux
+Libs: -L${libdir} -lclayer
 Cflags: -I${includedir}

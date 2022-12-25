@@ -4,7 +4,7 @@ Common
 * Add your name to [COPYING](/COPYING).
 * Don't add your name to `AUTHORS` - it's for maintainers.
 * Add copyright notice in the beginning of changed files except the headers.
-* If you change the behavior (even just fix a bug) of **libkernaux** (stable),
+* If you change the behavior (even just fix a bug) of **libclayer** (stable),
   add a record to [ChangeLog](/ChangeLog).
 
 Prohibitions:
@@ -87,19 +87,6 @@ Use **cppcheck**.
 * Name methods (*functions that belong to a specific type*) in lower snake case
   and with the prefix of the type name in Pascal case (example:
   `FooBar_car_cdr`).
-
-* Name public (*defined in the headers and exported as symbols*) regular
-  functions (*not methods*) and variables with the prefix `kernaux_` (example:
-  `kernaux_foo_bar`).
-* Name public (*defined in the headers*) macros with the prefix `KERNAUX_`
-  (example: `KERNAUX_FOO_BAR`).
-* Name public (*defined in the headers*) types with the prefix `KernAux_`
-  (example: `KernAux_FooBar`).
-* Name public (*defined in the headers*) with the prefix `KernAux_` and with the
-  prefix of the surrounding type, separate type names with underscore (example:
-  `KernAux_FooBar_CarCdr`).
-* Name public (*defined in the headers*) methods with the prefix `KernAux_` and
-  with the prefix of the type name (example: `KernAux_FooBar_car_cdr`).
 
 * Use postfix `size` for a byte size.
 * Use postfix `slen` for C string length without terminating `\0` character

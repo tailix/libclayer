@@ -2,11 +2,11 @@
 #include "config.h"
 #endif
 
-#include <kernaux/libc.h>
+#include <libclayer.h>
 
 #include <stddef.h>
 
-struct KernAux_Libc kernaux_libc = {
+struct Libclayer libclayer = {
     .abort = NULL,
     .exit = NULL,
 
