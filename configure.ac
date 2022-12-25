@@ -57,7 +57,6 @@ AC_ARG_ENABLE([freestanding],    AS_HELP_STRING([--enable-freestanding],    [bui
 AC_ARG_ENABLE([checks],          AS_HELP_STRING([--enable-checks],          [enable usual tests and examples]))
 AC_ARG_ENABLE([checks-all],      AS_HELP_STRING([--enable-checks-all],      [enable all checks]))
 AC_ARG_ENABLE([checks-cppcheck], AS_HELP_STRING([--enable-checks-cppcheck], [enable cppcheck]))
-AC_ARG_ENABLE([checks-pthreads], AS_HELP_STRING([--enable-checks-pthreads], [enable tests that require pthreads]))
 AC_ARG_ENABLE([checks-python],   AS_HELP_STRING([--enable-checks-python],   [enable tests that require Python 3 with YAML and Jinja2]))
 AC_ARG_ENABLE([split-libc],      AS_HELP_STRING([--enable-split-libc],      [split off libc]))
 
@@ -96,7 +95,6 @@ AC_DEFUN([do_enable_checks_all],
 [
 if test -z "$enable_checks";          then enable_checks=yes;          fi
 if test -z "$enable_checks_cppcheck"; then enable_checks_cppcheck=yes; fi
-if test -z "$enable_checks_pthreads"; then enable_checks_pthreads=yes; fi
 if test -z "$enable_checks_python";   then enable_checks_python=yes;   fi
 ])
 AS_IF([test "$enable_checks_all" = yes], do_enable_checks_all)
@@ -145,7 +143,6 @@ AS_IF([test "$enable_freestanding"    = yes], [enable_freestanding=yes],    [ena
 AS_IF([test "$enable_checks"          = yes], [enable_checks=yes],          [enable_checks=no])
 AS_IF([test "$enable_checks_all"      = yes], [enable_checks_all=yes],      [enable_checks_all=no])
 AS_IF([test "$enable_checks_cppcheck" = yes], [enable_checks_cppcheck=yes], [enable_checks_cppcheck=no])
-AS_IF([test "$enable_checks_pthreads" = yes], [enable_checks_pthreads=yes], [enable_checks_pthreads=no])
 AS_IF([test "$enable_checks_python"   = yes], [enable_checks_python=yes],   [enable_checks_python=no])
 AS_IF([test "$enable_split_libc"      = yes], [enable_split_libc=yes],      [enable_split_libc=no])
 
@@ -211,7 +208,6 @@ dnl Features (disabled by default)
 AM_CONDITIONAL([ENABLE_FREESTANDING],    [test "$enable_freestanding"    = yes])
 AM_CONDITIONAL([ENABLE_CHECKS],          [test "$enable_checks"          = yes])
 AM_CONDITIONAL([ENABLE_CHECKS_CPPCHECK], [test "$enable_checks_cppcheck" = yes])
-AM_CONDITIONAL([ENABLE_CHECKS_PTHREADS], [test "$enable_checks_pthreads" = yes])
 AM_CONDITIONAL([ENABLE_CHECKS_PYTHON],   [test "$enable_checks_python"   = yes])
 AM_CONDITIONAL([ENABLE_SPLIT_LIBC],      [test "$enable_split_libc"      = yes])
 
@@ -265,7 +261,6 @@ dnl Features (disabled by default)
 AS_IF([test "$enable_freestanding"    = yes], [AC_DEFINE([ENABLE_FREESTANDING],    [1], [build for freestanding environment])])
 AS_IF([test "$enable_checks"          = yes], [AC_DEFINE([ENABLE_CHECKS],          [1], [enabled usual tests and examples])])
 AS_IF([test "$enable_checks_cppcheck" = yes], [AC_DEFINE([ENABLE_CHECKS_CPPCHECK], [1], [enabled cppcheck])])
-AS_IF([test "$enable_checks_pthreads" = yes], [AC_DEFINE([ENABLE_CHECKS_PTHREADS], [1], [enabled tests that require pthreads])])
 AS_IF([test "$enable_checks_python"   = yes], [AC_DEFINE([ENABLE_CHECKS_PYTHON],   [1], [enabled tests that require Python 3 with YAML and Jinja2])])
 AS_IF([test "$enable_split_libc"      = yes], [AC_DEFINE([ENABLE_SPLIT_LIBC],      [1], [split off libc])])
 
@@ -349,10 +344,6 @@ AC_CHECK_HEADERS([limits.h stdarg.h stddef.h stdint.h],,
 AS_IF([test "$enable_checks" = yes],
   [AC_CHECK_HEADERS([assert.h setjmp.h stdio.h stdlib.h string.h],,
     [AC_MSG_ERROR([the headers are required])])])
-
-AS_IF([test "$enable_checks" = yes -a "$enable_checks_pthreads" = yes],
-  [AC_CHECK_HEADERS([pthread.h],,
-    [AC_MSG_ERROR([the header is required])])])
 
 AM_PATH_PYTHON([3.8],, [:])
 AS_IF([test "$enable_checks_python" = yes -a "$enable_checks" = yes -a "$PYTHON" = ':'],

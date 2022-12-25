@@ -1,7 +1,6 @@
 /cmdline
 /generic_display
 /generic_malloc
-/generic_mutex
 /macro_bits
 /macro_cast
 /macro_container_of

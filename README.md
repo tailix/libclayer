@@ -54,7 +54,6 @@ zero). Work-in-progress APIs can change at any time.
   * [Memory allocator](/include/kernaux/generic/malloc.h) (*non-breaking since* **0.5.0**)
     * [Example](/examples/generic_malloc.c)
   * [Mutex](/include/kernaux/generic/mutex.h) (*non-breaking since* **0.5.0**)
-    * [Example](/examples/generic_mutex.c)
 * Algorithms
   * [Free list memory allocator](/include/kernaux/free_list.h) (*non-breaking since* **0.5.0**)
   * [Simple command line parser](/include/kernaux/cmdline.h) (*non-breaking since* **0.2.0**)
@@ -136,7 +135,6 @@ stable options.
 * `--enable-checks` - enable usual tests and examples
 * `--enable-checks-all` - enable all checks
 * `--enable-checks-cppcheck` - enable cppcheck
-* `--enable-checks-pthreads` - enable tests that require pthreads
 * `--enable-checks-python` - enable tests that require Python 3 with YAML and
   Jinja2
 * `--enable-pkg-config[=PATH]` - install pkg-config files
