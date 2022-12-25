@@ -43,7 +43,6 @@
 
 /Makefile.in
 /examples/Makefile.in
-/fixtures/Makefile.in
 /include/Makefile.in
 /libc/Makefile.in
 /libc/include/Makefile.in
@@ -76,7 +75,6 @@
 
 /Makefile
 /examples/Makefile
-/fixtures/Makefile
 /include/Makefile
 /libc/Makefile
 /libc/include/Makefile

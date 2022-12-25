@@ -13,10 +13,6 @@ endif
 
 SUBDIRS += .
 
-if ENABLE_FIXTURES
-SUBDIRS += fixtures
-endif
-
 if ENABLE_CHECKS
 SUBDIRS += examples tests
 endif

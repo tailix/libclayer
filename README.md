@@ -139,7 +139,6 @@ stable options.
 * `--enable-checks-pthreads` - enable tests that require pthreads
 * `--enable-checks-python` - enable tests that require Python 3 with YAML and
   Jinja2
-* `--enable-fixtures` - enable fixtures for tests and bindings
 * `--enable-pkg-config[=PATH]` - install pkg-config files
   [PATH='${libdir}/pkgconfig']
 
@@ -195,7 +194,7 @@ environment.
 
 ```
 ./autogen.sh # if present
-./configure --enable-fixtures --enable-checks # or --enable-checks-all, but see prerequisites
+./configure --enable-checks # or --enable-checks-all, but see prerequisites
 make
 ```
 
