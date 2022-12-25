@@ -68,11 +68,3 @@ if ASM_X86_64
 libkernaux_la_SOURCES += src/asm/x86_64.S
 endif
 endif
-
-####################
-# Default packages #
-####################
-
-if WITH_PFA
-libkernaux_la_SOURCES += src/pfa.c
-endif

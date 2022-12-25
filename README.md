@@ -43,8 +43,6 @@ zero). Work-in-progress APIs can change at any time.
   * [Runtime environment](/include/kernaux/runtime.h) (*non-breaking since* **0.7.0**)
   * [Macros](/include/kernaux/macro.h) (*non-breaking since* **0.6.0**)
   * Stack trace *(planned)*
-* Algorithms
-  * [Page Frame Allocator](/include/kernaux/pfa.h) (*work in progress*)
 * libc replacement (*work in progress*)
   * [ctype.h](/libc/include/ctype.h)
   * [errno.h](/libc/include/errno.h)

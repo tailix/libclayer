@@ -66,7 +66,6 @@ AC_ARG_WITH(  [arch-i386],       AS_HELP_STRING([--without-arch-i386],      [wit
 AC_ARG_WITH(  [arch-riscv64],    AS_HELP_STRING([--without-arch-riscv64],   [without architecture riscv64]))
 AC_ARG_WITH(  [arch-x86-64],     AS_HELP_STRING([--without-arch-x86-64],    [without architecture x86-64]))
 AC_ARG_WITH(  [asm],             AS_HELP_STRING([--without-asm],            [without kernel assembler helpers]))
-AC_ARG_WITH(  [pfa],             AS_HELP_STRING([--without-pfa],            [without Page Frame Allocator]))
 
 dnl Packages (disabled by default)
 AC_ARG_WITH(  [libc],            AS_HELP_STRING([--with-libc],              [with libc replacement]))
@@ -98,7 +97,6 @@ if test -z "$with_arch_i386";    then with_arch_i386=no;    fi
 if test -z "$with_arch_riscv64"; then with_arch_riscv64=no; fi
 if test -z "$with_arch_x86_64";  then with_arch_x86_64=no;  fi
 if test -z "$with_asm";          then with_asm=no;          fi
-if test -z "$with_pfa";          then with_pfa=no;          fi
 ])
 AS_IF([test "$with_all" = no], do_without_all)
 
@@ -131,7 +129,6 @@ AS_IF([test "$with_arch_i386"         = no ], [with_arch_i386=no],          [wit
 AS_IF([test "$with_arch_riscv64"      = no ], [with_arch_riscv64=no],       [with_arch_riscv64=yes])
 AS_IF([test "$with_arch_x86_64"       = no ], [with_arch_x86_64=no],        [with_arch_x86_64=yes])
 AS_IF([test "$with_asm"               = no ], [with_asm=no],                [with_asm=yes])
-AS_IF([test "$with_pfa"               = no ], [with_pfa=no],                [with_pfa=yes])
 
 dnl Packages (disabled by default)
 AS_IF([test "$with_libc"              = yes], [with_libc=yes],              [with_libc=no])
@@ -178,7 +175,6 @@ AM_CONDITIONAL([WITH_ARCH_I386],         [test "$with_arch_i386"         = yes])
 AM_CONDITIONAL([WITH_ARCH_RISCV64],      [test "$with_arch_riscv64"      = yes])
 AM_CONDITIONAL([WITH_ARCH_X86_64],       [test "$with_arch_x86_64"       = yes])
 AM_CONDITIONAL([WITH_ASM],               [test "$with_asm"               = yes])
-AM_CONDITIONAL([WITH_PFA],               [test "$with_pfa"               = yes])
 
 dnl Packages (disabled by default)
 AM_CONDITIONAL([WITH_LIBC],              [test "$with_libc"              = yes])
@@ -217,7 +213,6 @@ AS_IF([test "$with_arch_i386"         = yes], [AC_DEFINE([WITH_ARCH_I386],      
 AS_IF([test "$with_arch_riscv64"      = yes], [AC_DEFINE([WITH_ARCH_RISCV64],      [1], [with architecture riscv64])])
 AS_IF([test "$with_arch_x86_64"       = yes], [AC_DEFINE([WITH_ARCH_X86_64],       [1], [with architecture x86_64])])
 AS_IF([test "$with_asm"               = yes], [AC_DEFINE([WITH_ASM],               [1], [with kernel assembler helpers])])
-AS_IF([test "$with_pfa"               = yes], [AC_DEFINE([WITH_PFA],               [1], [with Page Frame Allocator])])
 
 dnl Packages (disabled by default)
 AS_IF([test "$with_libc"              = yes], [AC_DEFINE([WITH_LIBC],              [1], [with libc replacement])])
@@ -239,7 +234,6 @@ dnl Packages (enabled by default)
 AS_IF([test "$with_arch_i386"    = no], [AC_SUBST([comment_line_arch_i386],    [//])])
 AS_IF([test "$with_arch_riscv64" = no], [AC_SUBST([comment_line_arch_riscv64], [//])])
 AS_IF([test "$with_arch_x86_64"  = no], [AC_SUBST([comment_line_arch_x86_64],  [//])])
-AS_IF([test "$with_pfa"          = no], [AC_SUBST([comment_line_pfa],          [//])])
 
 
 

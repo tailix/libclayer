@@ -1,6 +1,4 @@
 #ifndef KERNAUX_INCLUDED_VERSION
 #define KERNAUX_INCLUDED_VERSION
 
-@comment_line_pfa@#define KERNAUX_VERSION_WITH_PFA
-
 #endif
