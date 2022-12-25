@@ -1,14 +1,5 @@
 nobase_include_HEADERS = \
 	kernaux.h                            \
-	kernaux/arch/i386.h                  \
-	kernaux/arch/i386-idt.h              \
-	kernaux/arch/riscv64.h               \
-	kernaux/arch/x86_64.h                \
-	kernaux/arch/x86.h                   \
-	kernaux/asm/i386.h                   \
-	kernaux/asm/riscv64.h                \
-	kernaux/asm/x86_64.h                 \
-	kernaux/asm/x86.h                    \
 	kernaux/macro.h                      \
 	kernaux/macro/packing_end.run        \
 	kernaux/macro/packing_start.run      \

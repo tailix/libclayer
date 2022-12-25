@@ -58,14 +58,6 @@ AC_ARG_ENABLE([split-libc],      AS_HELP_STRING([--enable-split-libc],      [spl
 dnl Features (with parameter)
 AC_ARG_ENABLE([pkg-config],      AS_HELP_STRING([--enable-pkg-config@<:@=PATH@:>@], [install pkg-config files @<:@PATH='${libdir}/pkgconfig'@:>@]))
 
-dnl Packages (enabled by default)
-AC_ARG_WITH(  [all],             AS_HELP_STRING([--without-all],            [without all default packages]))
-AC_ARG_WITH(  [arch-all],        AS_HELP_STRING([--without-arch-all],       [without all architectures]))
-AC_ARG_WITH(  [arch-i386],       AS_HELP_STRING([--without-arch-i386],      [without architecture i386]))
-AC_ARG_WITH(  [arch-riscv64],    AS_HELP_STRING([--without-arch-riscv64],   [without architecture riscv64]))
-AC_ARG_WITH(  [arch-x86-64],     AS_HELP_STRING([--without-arch-x86-64],    [without architecture x86-64]))
-AC_ARG_WITH(  [asm],             AS_HELP_STRING([--without-asm],            [without kernel assembler helpers]))
-
 dnl Packages (disabled by default)
 AC_ARG_WITH(  [libc],            AS_HELP_STRING([--with-libc],              [with libc replacement]))
 
@@ -81,23 +73,6 @@ if test -z "$enable_checks";          then enable_checks=yes;          fi
 if test -z "$enable_checks_cppcheck"; then enable_checks_cppcheck=yes; fi
 ])
 AS_IF([test "$enable_checks_all" = yes], do_enable_checks_all)
-
-AC_DEFUN([do_without_arch_all],
-[
-if test -z "$with_arch_i386";    then with_arch_i386=no;    fi
-if test -z "$with_arch_riscv64"; then with_arch_riscv64=no; fi
-if test -z "$with_arch_x86_64";  then with_arch_x86_64=no;  fi
-])
-AS_IF([test "$with_arch_all" = no], do_without_arch_all)
-
-AC_DEFUN([do_without_all],
-[
-if test -z "$with_arch_i386";    then with_arch_i386=no;    fi
-if test -z "$with_arch_riscv64"; then with_arch_riscv64=no; fi
-if test -z "$with_arch_x86_64";  then with_arch_x86_64=no;  fi
-if test -z "$with_asm";          then with_asm=no;          fi
-])
-AS_IF([test "$with_all" = no], do_without_all)
 
 
 
@@ -120,14 +95,6 @@ AS_IF([test "$enable_split_libc"      = yes], [enable_split_libc=yes],      [ena
 dnl Features (with parameter)
 AS_IF([test "$enable_pkg_config"      = yes], [enable_pkg_config='${libdir}/pkgconfig'])
 AS_IF([test "$enable_pkg_config"      = no ], [enable_pkg_config=''])
-
-dnl Packages (enabled by default)
-AS_IF([test "$with_all"               = no ], [with_all=no],                [with_all=yes])
-AS_IF([test "$with_arch_all"          = no ], [with_arch_all=no],           [with_arch_all=yes])
-AS_IF([test "$with_arch_i386"         = no ], [with_arch_i386=no],          [with_arch_i386=yes])
-AS_IF([test "$with_arch_riscv64"      = no ], [with_arch_riscv64=no],       [with_arch_riscv64=yes])
-AS_IF([test "$with_arch_x86_64"       = no ], [with_arch_x86_64=no],        [with_arch_x86_64=yes])
-AS_IF([test "$with_asm"               = no ], [with_asm=no],                [with_asm=yes])
 
 dnl Packages (disabled by default)
 AS_IF([test "$with_libc"              = yes], [with_libc=yes],              [with_libc=no])
@@ -169,17 +136,8 @@ AM_CONDITIONAL([ENABLE_SPLIT_LIBC],      [test "$enable_split_libc"      = yes])
 dnl Features (with parameter)
 AM_CONDITIONAL([ENABLE_PKG_CONFIG],      [test ! -z "$enable_pkg_config"])
 
-dnl Packages (enabled by default)
-AM_CONDITIONAL([WITH_ARCH_I386],         [test "$with_arch_i386"         = yes])
-AM_CONDITIONAL([WITH_ARCH_RISCV64],      [test "$with_arch_riscv64"      = yes])
-AM_CONDITIONAL([WITH_ARCH_X86_64],       [test "$with_arch_x86_64"       = yes])
-AM_CONDITIONAL([WITH_ASM],               [test "$with_asm"               = yes])
-
 dnl Packages (disabled by default)
 AM_CONDITIONAL([WITH_LIBC],              [test "$with_libc"              = yes])
-
-dnl Packages (virtual)
-AM_CONDITIONAL([WITH_ARCH_X86],          [test "$with_arch_i386" = yes -o "$with_arch_x86_64" = yes])
 
 
 
@@ -207,18 +165,8 @@ AS_IF([test "$enable_checks"          = yes], [AC_DEFINE([ENABLE_CHECKS],       
 AS_IF([test "$enable_checks_cppcheck" = yes], [AC_DEFINE([ENABLE_CHECKS_CPPCHECK], [1], [enabled cppcheck])])
 AS_IF([test "$enable_split_libc"      = yes], [AC_DEFINE([ENABLE_SPLIT_LIBC],      [1], [split off libc])])
 
-dnl Packages (enabled by default)
-AS_IF([test "$with_arch_i386"         = yes], [AC_DEFINE([WITH_ARCH_I386],         [1], [with architecture i386])])
-AS_IF([test "$with_arch_riscv64"      = yes], [AC_DEFINE([WITH_ARCH_RISCV64],      [1], [with architecture riscv64])])
-AS_IF([test "$with_arch_x86_64"       = yes], [AC_DEFINE([WITH_ARCH_X86_64],       [1], [with architecture x86_64])])
-AS_IF([test "$with_asm"               = yes], [AC_DEFINE([WITH_ASM],               [1], [with kernel assembler helpers])])
-
 dnl Packages (disabled by default)
 AS_IF([test "$with_libc"              = yes], [AC_DEFINE([WITH_LIBC],              [1], [with libc replacement])])
-
-dnl Packages (virtual)
-AS_IF([test "$with_arch_i386"         = yes], [AC_DEFINE([WITH_ARCH_X86],          [1], [with architecture x86])])
-AS_IF([test "$with_arch_x86_64"       = yes], [AC_DEFINE([WITH_ARCH_X86],          [1], [with architecture x86])])
 
 
 
@@ -228,11 +176,6 @@ AS_IF([test "$with_arch_x86_64"       = yes], [AC_DEFINE([WITH_ARCH_X86],       
 
 dnl Features (with parameter)
 AC_SUBST([pkgconfdir], [$enable_pkg_config])
-
-dnl Packages (enabled by default)
-AS_IF([test "$with_arch_i386"    = no], [AC_SUBST([comment_line_arch_i386],    [//])])
-AS_IF([test "$with_arch_riscv64" = no], [AC_SUBST([comment_line_arch_riscv64], [//])])
-AS_IF([test "$with_arch_x86_64"  = no], [AC_SUBST([comment_line_arch_x86_64],  [//])])
 
 
 

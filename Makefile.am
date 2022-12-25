@@ -44,27 +44,3 @@ libkernaux_la_SOURCES = src/runtime.c
 if WITH_LIBC
 libkernaux_la_LIBADD += libc/libc.la
 endif
-
-#######
-# ARCH #
-#######
-
-if WITH_ARCH_I386
-libkernaux_la_SOURCES += src/arch/i386/idt.c
-endif
-
-#######
-# ASM #
-#######
-
-if WITH_ASM
-if ASM_I386
-libkernaux_la_SOURCES += src/asm/i386.S
-endif
-if ASM_RISCV64
-libkernaux_la_SOURCES += src/asm/riscv64.S
-endif
-if ASM_X86_64
-libkernaux_la_SOURCES += src/asm/x86_64.S
-endif
-endif
