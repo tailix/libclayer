@@ -37,7 +37,7 @@ jobs:
       - name: make
         run: make
       - name: check
-        run: make check || (./make/test-suite-log && false)
+        run: make check
       - name: install
         run: sudo make install
 
@@ -79,7 +79,7 @@ jobs:
       - name: make
         run: make
       - name: check
-        run: make check || (./make/test-suite-log && false)
+        run: make check
       - name: install
         run: sudo make install
 
@@ -99,7 +99,7 @@ jobs:
       - name: make
         run: make
       - name: check
-        run: make check || (./make/test-suite-log && false)
+        run: make check
       - name: install
         run: sudo make install
 
@@ -135,6 +135,6 @@ jobs:
       - name: make
         run: cd "libclayer-$(cat VERSION)" && make
       - name: check
-        run: cd "libclayer-$(cat VERSION)" && make check || (./make/test-suite-log && false)
+        run: cd "libclayer-$(cat VERSION)" && make check
       - name: install
         run: cd "libclayer-$(cat VERSION)" && sudo make install
