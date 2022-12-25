@@ -42,44 +42,26 @@ zero). Work-in-progress APIs can change at any time.
   * [Feature macros](/include/kernaux/version.h.in) (*work in progress*)
   * [Runtime environment](/include/kernaux/runtime.h) (*non-breaking since* **0.7.0**)
   * [Macros](/include/kernaux/macro.h) (*non-breaking since* **0.6.0**)
-    * [Example: packing](/examples/macro_packing.c)
-    * [Example: BITS](/examples/macro_bits.c)
-    * [Example: CAST\_\*](/examples/macro_cast.c);
-    * [Example: CONTAINER\_OF](/examples/macro_container_of.c)
-    * [Example: STATIC\_TEST\*](/examples/macro_static_test.c)
   * Stack trace *(planned)*
 * Generic types
   * [Display](/include/kernaux/generic/display.h) (*non-breaking since* **0.7.0**)
-    * [Example](/examples/generic_display.c)
   * [Memory allocator](/include/kernaux/generic/malloc.h) (*non-breaking since* **0.5.0**)
-    * [Example](/examples/generic_malloc.c)
   * [Mutex](/include/kernaux/generic/mutex.h) (*non-breaking since* **0.5.0**)
 * Algorithms
   * [Free list memory allocator](/include/kernaux/free_list.h) (*non-breaking since* **0.5.0**)
   * [Simple command line parser](/include/kernaux/cmdline.h) (*non-breaking since* **0.2.0**)
-    * [Example](/examples/cmdline.c)
   * [Page Frame Allocator](/include/kernaux/pfa.h) (*work in progress*)
-    * [Example](/examples/pfa.c)
 * Data formats
   * [ELF](/include/kernaux/elf.h) (*work in progress*)
   * [MBR](/include/kernaux/mbr.h) (*work in progress*)
   * [Multiboot 2 (GRUB 2)](/include/kernaux/multiboot2.h.in) (*non-breaking since* **0.7.0**)
-    * [Example: header macros](/examples/multiboot2_header_macro.c)
 * Utilities
   * [Measurement units utils](/include/kernaux/units.h) (*work in progress*)
-    * [Example: To human](/examples/units_human.c)
   * [Memory map](/include/kernaux/memmap.h) (*non-breaking since* **0.7.0**)
-    * [Example](/examples/memmap.c)
   * [printf format parser](/include/kernaux/printf_fmt.h) (*non-breaking since* **0.6.0**)
-    * [Example](/examples/printf_fmt.c)
 * Usual functions
   * [itoa/ftoa replacement](/include/kernaux/ntoa.h) (*non-breaking since* **0.4.0**)
-    * [Example](/examples/ntoa.c)
   * [printf replacement](/include/kernaux/printf.h) (*non-breaking since* **0.5.0**)
-    * [Example: fprintf](/examples/printf_file.c)
-    * [Example: vfprintf](/examples/printf_file_va.c)
-    * [Example: snprintf](/examples/printf_str.c)
-    * [Example: vsnprintf](/examples/printf_str_va.c)
 * libc replacement (*work in progress*)
   * [ctype.h](/libc/include/ctype.h)
   * [errno.h](/libc/include/errno.h)
@@ -132,7 +114,7 @@ stable options.
 
 #### Features
 
-* `--enable-checks` - enable usual tests and examples
+* `--enable-checks` - enable usual tests
 * `--enable-checks-all` - enable all checks
 * `--enable-checks-cppcheck` - enable cppcheck
   Jinja2

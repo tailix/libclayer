@@ -14,7 +14,7 @@ endif
 SUBDIRS += .
 
 if ENABLE_CHECKS
-SUBDIRS += examples tests
+SUBDIRS += tests
 endif
 
 libc/libc.la:

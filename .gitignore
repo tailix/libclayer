@@ -42,7 +42,6 @@
 !/m4/.keep
 
 /Makefile.in
-/examples/Makefile.in
 /include/Makefile.in
 /libc/Makefile.in
 /libc/include/Makefile.in
@@ -66,15 +65,11 @@
 /conftest.c
 /conftest.err
 
-/examples/test-suite.log
-/examples/*.log
-/examples/*.trs
 /tests/test-suite.log
 /tests/test_*.log
 /tests/test_*.trs
 
 /Makefile
-/examples/Makefile
 /include/Makefile
 /libc/Makefile
 /libc/include/Makefile
