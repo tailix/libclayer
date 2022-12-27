@@ -1,6 +1,7 @@
+#include <libclayer/string.h>
+
 #include <assert.h>
 #include <stddef.h>
-#include <string.h>
 
 void test_main()
 {

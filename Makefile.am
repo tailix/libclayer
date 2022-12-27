@@ -10,7 +10,18 @@ if ENABLE_CHECKS
 SUBDIRS += tests
 endif
 
-lib_LTLIBRARIES = libclayer.la
+lib_LTLIBRARIES =
+
+if ENABLE_LIBCLAYER
+lib_LTLIBRARIES += libclayer.la
+libclayer_la_SOURCES = $(common_sources)
+endif
+
+if ENABLE_LIBC
+lib_LTLIBRARIES += libc.la
+libc_la_SOURCES = $(common_sources)
+libc_la_CFLAGS = $(AM_CFLAGS) -DLIBCLAYER_NOPREFIX
+endif
 
 if ENABLE_PKG_CONFIG
 pkgconfigdir = @pkgconfdir@
@@ -21,7 +32,7 @@ endif
 # Required files #
 ##################
 
-libclayer_la_SOURCES = \
+common_sources = \
 	src/ctype.c \
 	src/errno.c \
 	src/libclayer.c \
@@ -29,13 +40,13 @@ libclayer_la_SOURCES = \
 	src/string.c
 
 if ASM_I386
-libclayer_la_SOURCES += \
+common_sources += \
 	src/asm/i386/longjmp.S \
 	src/asm/i386/setjmp.S
 endif
 
 if ASM_X86_64
-libclayer_la_SOURCES += \
+common_sources += \
 	src/asm/x86_64/longjmp.S \
 	src/asm/x86_64/setjmp.S
 endif

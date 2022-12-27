@@ -2,6 +2,6 @@
 #include "config.h"
 #endif
 
-#include <errno.h>
+#include <libclayer/errno.h>
 
 int LIBCLAYER(errno) = 0;

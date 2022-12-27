@@ -83,26 +83,6 @@ jobs:
       - name: install
         run: sudo make install
 
-  cond:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        packages:
-          - without: 'all'
-          - without: 'io'
-    steps:
-      - uses: actions/checkout@v2
-      - name: autogen
-        run: ./autogen.sh
-      - name: configure
-        run: ./configure --enable-checks --without-${{matrix.packages.without}}
-      - name: make
-        run: make
-      - name: check
-        run: make check
-      - name: install
-        run: sudo make install
-
   freestanding:
     runs-on: ubuntu-latest
     steps:

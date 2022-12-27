@@ -1,12 +1,7 @@
-#ifndef _SYS_TYPES_H
-#define _SYS_TYPES_H 1
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#ifdef __cplusplus
-}
-#endif
-
+#ifdef LIBCLAYER_NOPREFIX
+#include <libclayer/sys/types.h>
+#else
+#define LIBCLAYER_NOPREFIX
+#include <libclayer/sys/types.h>
+#undef LIBCLAYER_NOPREFIX
 #endif

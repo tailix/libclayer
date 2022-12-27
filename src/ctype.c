@@ -2,7 +2,7 @@
 #include "config.h"
 #endif
 
-#include <ctype.h>
+#include <libclayer/ctype.h>
 
 int LIBCLAYER(isdigit)(const int c)
 {

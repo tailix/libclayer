@@ -2,8 +2,9 @@
 #include "config.h"
 #endif
 
+#include <libclayer/string.h>
+
 #include <stddef.h>
-#include <string.h>
 
 int LIBCLAYER(memcmp)(const void *s1, const void *s2, size_t n)
 {

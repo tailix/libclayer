@@ -42,7 +42,7 @@ AC_SUBST([PACKAGE_DESCR], ['libc for both hosted and freestanding environments']
 
 dnl Features (enabled by default)
 AC_ARG_ENABLE([float],           AS_HELP_STRING([--disable-float],          [disable floating-point arithmetic]))
-AC_ARG_ENABLE([prefix],          AS_HELP_STRING([--disable-prefix],         [disable name prefix]))
+AC_ARG_ENABLE([libclayer],       AS_HELP_STRING([--disable-libclayer],      [install as libclayer]))
 AC_ARG_ENABLE([werror],          AS_HELP_STRING([--disable-werror],         [disable -Werror]))
  
 dnl Features (disabled by default)
@@ -50,6 +50,7 @@ AC_ARG_ENABLE([freestanding],    AS_HELP_STRING([--enable-freestanding],    [bui
 AC_ARG_ENABLE([checks],          AS_HELP_STRING([--enable-checks],          [enable usual tests]))
 AC_ARG_ENABLE([checks-all],      AS_HELP_STRING([--enable-checks-all],      [enable all checks]))
 AC_ARG_ENABLE([checks-cppcheck], AS_HELP_STRING([--enable-checks-cppcheck], [enable cppcheck]))
+AC_ARG_ENABLE([libc],            AS_HELP_STRING([--enable-libc],            [install as libc]))
 
 dnl Features (with parameter)
 AC_ARG_ENABLE([pkg-config],      AS_HELP_STRING([--enable-pkg-config@<:@=PATH@:>@], [install pkg-config files @<:@PATH='${libdir}/pkgconfig'@:>@]))
@@ -75,7 +76,7 @@ AS_IF([test "$enable_checks_all" = yes], do_enable_checks_all)
 
 dnl Features (enabled by default)
 AS_IF([test "$enable_float"           = no ], [enable_float=no],            [enable_float=yes])
-AS_IF([test "$enable_prefix"          = no ], [enable_prefix=no],           [enable_prefix=yes])
+AS_IF([test "$enable_libclayer"       = no ], [enable_libclayer=no],        [enable_libclayer=yes])
 AS_IF([test "$enable_werror"          = no ], [enable_werror=no],           [enable_werror=yes])
 
 dnl Features (disabled by default)
@@ -83,6 +84,7 @@ AS_IF([test "$enable_freestanding"    = yes], [enable_freestanding=yes],    [ena
 AS_IF([test "$enable_checks"          = yes], [enable_checks=yes],          [enable_checks=no])
 AS_IF([test "$enable_checks_all"      = yes], [enable_checks_all=yes],      [enable_checks_all=no])
 AS_IF([test "$enable_checks_cppcheck" = yes], [enable_checks_cppcheck=yes], [enable_checks_cppcheck=no])
+AS_IF([test "$enable_libc"            = yes], [enable_libc=yes],            [enable_libc=no])
 
 dnl Features (with parameter)
 AS_IF([test "$enable_pkg_config"      = yes], [enable_pkg_config='${libdir}/pkgconfig'])
@@ -95,7 +97,6 @@ AS_IF([test "$enable_pkg_config"      = no ], [enable_pkg_config=''])
 #############
 
 AS_IF([test "$enable_checks" = yes -a "$enable_freestanding" = yes], AC_MSG_ERROR([can not build freestanding tests]))
-AS_IF([test "$enable_checks" = yes -a "$enable_prefix"       = no ], AC_MSG_ERROR([can not build tests without prefix]))
 
 
 
@@ -113,13 +114,14 @@ AM_CONDITIONAL([ASM_X86],                [test "$host_cpu" = i386 -o "$host_cpu"
 
 dnl Features (enabled by default)
 AM_CONDITIONAL([ENABLE_FLOAT],           [test "$enable_float"           = yes])
-AM_CONDITIONAL([ENABLE_PREFIX],          [test "$enable_prefix"          = yes])
+AM_CONDITIONAL([ENABLE_LIBCLAYER],       [test "$enable_libclayer"       = yes])
 AM_CONDITIONAL([ENABLE_WERROR],          [test "$enable_werror"          = yes])
 
 dnl Features (disabled by default)
 AM_CONDITIONAL([ENABLE_FREESTANDING],    [test "$enable_freestanding"    = yes])
 AM_CONDITIONAL([ENABLE_CHECKS],          [test "$enable_checks"          = yes])
 AM_CONDITIONAL([ENABLE_CHECKS_CPPCHECK], [test "$enable_checks_cppcheck" = yes])
+AM_CONDITIONAL([ENABLE_LIBC],            [test "$enable_libc"            = yes])
 
 dnl Features (with parameter)
 AM_CONDITIONAL([ENABLE_PKG_CONFIG],      [test ! -z "$enable_pkg_config"])
@@ -141,16 +143,14 @@ AS_IF([test "$host_cpu" = x86_64],            [AC_DEFINE([ASM_X86],             
 
 dnl Features (enabled by default)
 AS_IF([test "$enable_float"           = yes], [AC_DEFINE([ENABLE_FLOAT],           [1], [enabled floating-point arithmetic])])
-AS_IF([test "$enable_prefix"          = yes], [AC_DEFINE([ENABLE_PREFIX],          [1], [enabled prefix])])
+AS_IF([test "$enable_libclayer"       = yes], [AC_DEFINE([ENABLE_LIBCLAYER],       [1], [install as libclayer])])
 AS_IF([test "$enable_werror"          = yes], [AC_DEFINE([ENABLE_WERROR],          [1], [enabled -Werror])])
 
 dnl Features (disabled by default)
 AS_IF([test "$enable_freestanding"    = yes], [AC_DEFINE([ENABLE_FREESTANDING],    [1], [build for freestanding environment])])
 AS_IF([test "$enable_checks"          = yes], [AC_DEFINE([ENABLE_CHECKS],          [1], [enabled usual tests])])
 AS_IF([test "$enable_checks_cppcheck" = yes], [AC_DEFINE([ENABLE_CHECKS_CPPCHECK], [1], [enabled cppcheck])])
-
-dnl Additional
-AS_IF([test "$enable_prefix"          = yes], [AC_DEFINE([LIBCLAYER_PREFIX], [libclayer_], [prefix])])
+AS_IF([test "$enable_libc"            = yes], [AC_DEFINE([ENABLE_LIBC],            [1], [install as libc])])
 
 
 

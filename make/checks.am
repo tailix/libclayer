@@ -13,7 +13,6 @@ CPPCHECK_ARGS = \
   --error-exitcode=1 \
   --std=c99          \
   --inline-suppr     \
-  -ULIBCLAYER_PREFIX \
   --enable=warning,style,performance,portability
 
 CPPCHECK_INC = \
