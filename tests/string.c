@@ -24,6 +24,8 @@ static char aaa[COUNT], bbb[COUNT];
 #define strncpy LIBCLAYER(strncpy)
 #define strnlen LIBCLAYER(strnlen)
 
+#define strstr  LIBCLAYER(strstr)
+
 void test_main()
 {
     { // memcmp
@@ -185,5 +187,28 @@ void test_main()
         assert(strnlen("aaaaaaaaaa", 9) == 9);
         assert(strnlen("aaaaaaaaaa", 10) == 10);
         assert(strnlen("aaaaaaaaaa", 123) == 10);
+    }
+
+    { // strstr
+        const char *const s0 = "";
+        assert(strstr(s0, "") == s0);
+        assert(strstr(s0, "x") == NULL);
+        const char *const s1 = "a";
+        assert(strstr(s1, "") == s1);
+        assert(strstr(s1, "a") == s1);
+        assert(strstr(s1, "ab") == NULL);
+        assert(strstr(s1, "x") == NULL);
+        const char *const s2 = "ab";
+        assert(strstr(s2, "") == s2);
+        assert(strstr(s2, "a") == s2);
+        assert(strstr(s2, "ab") == s2);
+        assert(strstr(s2, "abc") == NULL);
+        assert(strstr(s2, "b") == &s2[1]);
+        assert(strstr(s2, "bc") == NULL);
+        assert(strstr(s2, "x") == NULL);
+        const char *const s6 = "abcdef";
+        assert(strstr(s6, "abcdef") == s6);
+        assert(strstr(s6, "def") == &s6[3]);
+        assert(strstr(s6, "f") == &s6[5]);
     }
 }
