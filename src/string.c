@@ -106,7 +106,12 @@ char *LIBCLAYER(strncat)(char *dest, const char *src, size_t n)
 
 int LIBCLAYER(strncmp)(const char *s1, const char *s2, size_t n)
 {
-    for (; *s1 && n; ++s1, ++s2, --n) if (*s1 != *s2) return *s1 < *s2 ? -1 : 1;
+    while (n--) {
+        const char c1 = *s1++;
+        const char c2 = *s2++;
+        if (c1 != c2) return c1 < c2 ? -1 : 1;
+        if (!c1) return 0;
+    }
     return 0;
 }
 

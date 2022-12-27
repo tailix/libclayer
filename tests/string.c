@@ -19,6 +19,11 @@ static char aaa[COUNT], bbb[COUNT];
 #define strcpy  LIBCLAYER(strcpy)
 #define strlen  LIBCLAYER(strlen)
 
+#define strncat LIBCLAYER(strncat)
+#define strncmp LIBCLAYER(strncmp)
+#define strncpy LIBCLAYER(strncpy)
+#define strnlen LIBCLAYER(strnlen)
+
 void test_main()
 {
     { // memcmp
@@ -96,5 +101,89 @@ void test_main()
         assert(strlen("a") == 1);
         assert(strlen("aa") == 2);
         assert(strlen("aaaaaaaaaa") == 10);
+    }
+
+    { // strncat
+        memset(aaa, '\x01', COUNT);
+        aaa[0] = 'f'; aaa[1] = 'o'; aaa[2] = 'o'; aaa[3] = '\0';
+        strncat(aaa, "bar", 4);
+        for (const char *e = "foobar", *g = aaa; *e; ++e, ++g) assert(*g == *e);
+        assert(aaa[6] == '\0');
+
+        memset(aaa, '\x01', COUNT);
+        aaa[0] = 'f'; aaa[1] = 'o'; aaa[2] = 'o'; aaa[3] = '\0';
+        strncat(aaa, "bar", 3);
+        for (const char *e = "foobar", *g = aaa; *e; ++e, ++g) assert(*g == *e);
+        assert(aaa[6] == '\0');
+
+        memset(aaa, '\x01', COUNT);
+        aaa[0] = 'f'; aaa[1] = 'o'; aaa[2] = 'o'; aaa[3] = '\0';
+        strncat(aaa, "bar", 2);
+        for (const char *e = "fooba", *g = aaa; *e; ++e, ++g) assert(*g == *e);
+        assert(aaa[5] == '\0');
+
+        memset(aaa, '\x01', COUNT);
+        aaa[0] = 'f'; aaa[1] = 'o'; aaa[2] = 'o'; aaa[3] = '\0';
+        strncat(aaa, "bar", 1);
+        for (const char *e = "foob", *g = aaa; *e; ++e, ++g) assert(*g == *e);
+        assert(aaa[4] == '\0');
+
+        memset(aaa, '\x01', COUNT);
+        aaa[0] = 'f'; aaa[1] = 'o'; aaa[2] = 'o'; aaa[3] = '\0';
+        strncat(aaa, "bar", 0);
+        for (const char *e = "foo", *g = aaa; *e; ++e, ++g) assert(*g == *e);
+        assert(aaa[3] == '\0');
+    }
+
+    { // strncmp
+        assert(strncmp("", "", 0) == 0);
+        assert(strncmp("", "a", 0) == 0);
+        assert(strncmp("a", "", 0) == 0);
+        assert(strncmp("a", "a", 0) == 0);
+        assert(strncmp("", "a", 1) == -1);
+        assert(strncmp("a", "", 1) == 1);
+        assert(strncmp("a", "a", 1) == 0);
+        assert(strncmp("a", "aa", 1) == 0);
+        assert(strncmp("aa", "a", 1) == 0);
+        assert(strncmp("aa", "ab", 1) == 0);
+        assert(strncmp("ab", "aa", 1) == 0);
+        assert(strncmp("aa", "aa", 1) == 0);
+        assert(strncmp("aa", "ba", 1) == -1);
+        assert(strncmp("ba", "aa", 1) == 1);
+        assert(strncmp("ab", "ab", 1) == 0);
+        assert(strncmp("a", "aa", 2) == -1);
+        assert(strncmp("aa", "a", 2) == 1);
+        assert(strncmp("aa", "ab", 2) == -1);
+        assert(strncmp("ab", "aa", 2) == 1);
+        assert(strncmp("aa", "aa", 2) == 0);
+    }
+
+    { // strncpy
+        aaa[6] = 'x';
+        assert(strncpy(aaa, "foobar", 7) == aaa);
+        for (const char *e = "foobar", *g = aaa; *e; ++e, ++g) assert(*g == *e);
+        assert(aaa[6] == '\0');
+
+        aaa[6] = 'x';
+        assert(strncpy(aaa, "foobar", 6) == aaa);
+        for (const char *e = "foobar", *g = aaa; *e; ++e, ++g) assert(*g == *e);
+        assert(aaa[6] == 'x');
+    }
+
+    { // strnlen
+        assert(strnlen("", 0) == 0);
+        assert(strnlen("", 1) == 0);
+        assert(strnlen("", 123) == 0);
+        assert(strnlen("a", 0) == 0);
+        assert(strnlen("a", 1) == 1);
+        assert(strnlen("a", 123) == 1);
+        assert(strnlen("aa", 0) == 0);
+        assert(strnlen("aa", 1) == 1);
+        assert(strnlen("aa", 2) == 2);
+        assert(strnlen("aa", 123) == 2);
+        assert(strnlen("aaaaaaaaaa", 0) == 0);
+        assert(strnlen("aaaaaaaaaa", 9) == 9);
+        assert(strnlen("aaaaaaaaaa", 10) == 10);
+        assert(strnlen("aaaaaaaaaa", 123) == 10);
     }
 }
